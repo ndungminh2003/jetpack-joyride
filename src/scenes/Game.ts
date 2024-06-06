@@ -1,35 +1,71 @@
-import { Scene } from 'phaser';
+import { Scene } from "phaser";
 
-export class Game extends Scene
-{
-    camera: Phaser.Cameras.Scene2D.Camera;
-    background: Phaser.GameObjects.Image;
-    msg_text : Phaser.GameObjects.Text;
+export class Game extends Scene {
+  constructor() {
+    super("Game");
+  }
 
-    constructor ()
-    {
-        super('Game');
-    }
+  preload() {
+    // Ensure the path is correct and the image file exists
+    this.load.spritesheet("body", "assets/Characters/Barry/defaultBody.png", {
+      frameWidth: 32,
+      frameHeight: 32,
+    });
 
-    create ()
-    {
-        this.camera = this.cameras.main;
-        this.camera.setBackgroundColor(0x00ff00);
+    this.load.spritesheet("head", "assets/Characters/Barry/defaultHead.png", {
+      frameWidth: 32,
+      frameHeight: 32,
+    });
 
-        this.background = this.add.image(512, 384, 'background');
-        this.background.setAlpha(0.5);
+    this.load.image("forest", "assets/atlas/forest_assets.png")
+    this.load.tilemapTiledJSON("map", "assets/atlas/MapForest.json");
 
-        this.msg_text = this.add.text(512, 384, 'Make something fun!\nand share it with us:\nsupport@phaser.io', {
-            fontFamily: 'Arial Black', fontSize: 38, color: '#ffffff',
-            stroke: '#000000', strokeThickness: 8,
-            align: 'center'
-        });
-        this.msg_text.setOrigin(0.5);
+  }
 
-        this.input.once('pointerdown', () => {
+  create() {
+    // Create the 'run' animation
 
-            this.scene.start('GameOver');
+    // const container = this.add.container(400, 400);
 
-        });
-    }
+
+
+    // container.add(this.physics.add.sprite(550, 320, "head"))
+    // container.add(this.physics.add.sprite(550, 300, "body"))
+
+    // this.anims.create({
+    //   key: "head-run",
+    //   frames: this.anims.generateFrameNumbers("head", { frames: [] }),
+    //   frameRate: 10,
+    //   repeat: -1,
+    // });
+
+    // this.anims.create({
+    //   key: "run",
+    //   frames: this.anims.generateFrameNumbers("body", { frames: [] }),
+    //   frameRate: 10,
+    //   repeat: -1,
+    // });
+
+
+    // this.physics.add.sprite(550, 300, "body").play("run");
+    // this.physics.add.sprite(550, 286, "head").play("head-run");
+
+    const map = this.make.tilemap({ key: "map", tileWidth: 60, tileHeight: 32 });
+    const forestTileset = map.addTilesetImage("Forest", "forest");
+
+    map.createLayer("Background", forestTileset as Phaser.Tilemaps.Tileset, 0, 0);
+    map.createLayer("Layer1", forestTileset as Phaser.Tilemaps.Tileset, 0, 0);
+    map.createLayer("Layer2", forestTileset as Phaser.Tilemaps.Tileset, 0, 0);
+
+    // Add the sprite and play the 'run' animation
+
+    // Uncomment and adjust if needed
+    // this.input.once("pointerdown", () => {
+    //   this.scene.start("GameOver");
+    // });
+  }
+
+  update() {
+    // Game logic here
+  }
 }
