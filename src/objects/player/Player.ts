@@ -4,9 +4,8 @@ import { RunState } from "./state/RunState";
 export class Player extends Phaser.GameObjects.Container {
   declare body: Phaser.Physics.Arcade.Body;
   public currentScene: Phaser.Scene;
-  public currentState: BaseState; 
-
-  
+  public currentState: BaseState;
+  public keys: Map<string, Phaser.Input.Keyboard.Key>;
 
   constructor(
     scene: Phaser.Scene,
@@ -28,19 +27,25 @@ export class Player extends Phaser.GameObjects.Container {
     this.body.setSize(46, 48);
     this.setScale(2);
 
-    (this.getByName("body") as Phaser.GameObjects.Sprite).play("body-run");
-    (this.getByName("head") as Phaser.GameObjects.Sprite).play("head-run");
-    (this.getByName("jetpack") as Phaser.GameObjects.Sprite).play(
-      "jetpack-run"
-    );
+    this.getChildByName("body")?.play("body-run");
+    this.getChildByName("head")?.play("head-run");
+    this.getChildByName("jetpack")?.play("jetpack-run");
 
-    // this.body.setCollideWorldBounds(true);
-    
+    //input
+    this.keys = new Map([["JUMP", this.addKey("SPACE")]]);
 
     this.currentScene.add.existing(this);
   }
 
+  private addKey(key: string): Phaser.Input.Keyboard.Key {
+    return this.currentScene.input.keyboard!.addKey(key);
+  }
+
   public update(): void {
     this.currentState.update();
+  }
+
+  public getChildByName(name: string): Phaser.GameObjects.Sprite | undefined {
+    return this.getByName(name) as Phaser.GameObjects.Sprite | undefined;
   }
 }

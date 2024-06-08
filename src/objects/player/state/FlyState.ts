@@ -8,21 +8,17 @@ export class FlyState extends BaseState {
   }
 
   public update(): void {
-
-    if (this.player.currentScene.input.keyboard?.keys[38].isDown) {
-      (this.player.getByName("body") as Phaser.GameObjects.Sprite).play(
-        "body-fly"
-      );
-      (this.player.getByName("head") as Phaser.GameObjects.Sprite).play(
-        "head-fly"
-      );
-      (this.player.getByName("jetpack") as Phaser.GameObjects.Sprite).play(
-        "jetpack-fly"
-      );
-      this.player.body.setVelocityY(-800);
-    }
-
-    if (this.player.currentScene.input.keyboard?.keys[38].isUp) {
+    this.player.body.setVelocityY(-200);
+    (this.player.getChildByName("body") as Phaser.GameObjects.Sprite).play(
+      "body-fly", true
+    );
+    (this.player.getChildByName("head") as Phaser.GameObjects.Sprite).play(
+      "head-fly", true
+    );
+    (this.player.getChildByName("jetpack") as Phaser.GameObjects.Sprite).play(
+      "jetpack-fly", true
+    );
+    if (this.player.keys.get("JUMP")?.isUp) {
       this.changeState(new FallState(this.player));
     }
   }

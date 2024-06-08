@@ -1,5 +1,7 @@
 import { Player } from "../Player";
 import { BaseState } from "./BaseState";
+import { FlyState } from "./FlyState";
+import { RunState } from "./RunState";
 
 export class FallState extends BaseState {
   constructor(player: Player) {
@@ -7,17 +9,25 @@ export class FallState extends BaseState {
   }
 
   public update(): void {
-    if (this.player.currentScene.input.keyboard?.keys[38].isDown) {
-      (this.player.getByName("body") as Phaser.GameObjects.Sprite).play(
-        "body-fall"
-      );
-      (this.player.getByName("head") as Phaser.GameObjects.Sprite).play(
-        "head-fall"
-      );
-      (this.player.getByName("jetpack") as Phaser.GameObjects.Sprite).play(
-        "jetpack-fall"
-      );
-      this.player.body.setVelocityY(800);
+    this.player.body.setVelocityY(200);
+    (this.player.getChildByName("body") as Phaser.GameObjects.Sprite).play(
+      "body-fall",
+      true
+    );
+    (this.player.getChildByName("head") as Phaser.GameObjects.Sprite).play(
+      "head-fall",
+      true
+    );
+    (this.player.getChildByName("jetpack") as Phaser.GameObjects.Sprite).play(
+      "jetpack-fall",
+      true
+    );
+
+    if (this.player.keys.get("JUMP")?.isDown) {
+      this.changeState(new FlyState(this.player));
+    }
+    if (this.player.body.blocked.down) {
+      this.changeState(new RunState(this.player));
     }
   }
 }

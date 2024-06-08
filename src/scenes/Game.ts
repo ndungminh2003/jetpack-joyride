@@ -100,28 +100,28 @@ export class Game extends Scene {
       key: "body-fall",
       frames: this.anims.generateFrameNumbers("body", { start: 8, end: 11 }),
       frameRate: 10,
-      repeat: -1,
+      repeat: 0,
     });
 
     this.anims.create({
       key: "head-fall",
       frames: this.anims.generateFrameNumbers("head", { start: 8, end: 11 }),
       frameRate: 10,
-      repeat: -1,
+      repeat: 0,
     });
 
     this.anims.create({
       key: "jetpack-fall",
       frames: this.anims.generateFrameNumbers("jetpack", { start: 8, end: 11 }),
       frameRate: 10,
-      repeat: -1,
+      repeat: 0,
     });
 
     const body = this.add.sprite(8, 14, "body").setName("body");
     const head = this.add.sprite(8, 0, "head").setName("head");
     const jetpack = this.add.sprite(-5, 10, "jetpack").setName("jetpack");
 
-    this.player = new Player(this, 80, 0, [body, head, jetpack]);
+    this.player = new Player(this, 200, 0, [body, head, jetpack]);
 
     this.physics.world.enable(this.player);
 
