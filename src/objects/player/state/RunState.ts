@@ -9,16 +9,19 @@ export class RunState extends BaseState {
 
   public update(): void {
     (this.player.getChildByName("body") as Phaser.GameObjects.Sprite).play(
-      "body-run", true
+      "body-run",
+      true
     );
     (this.player.getChildByName("head") as Phaser.GameObjects.Sprite).play(
-      "head-run", true
+      "head-run",
+      true
     );
     (this.player.getChildByName("jetpack") as Phaser.GameObjects.Sprite).play(
-      "jetpack-run", true
+      "jetpack-run",
+      true
     );
 
-    if (this.player.keys.get("JUMP")?.isDown) {
+    if (this.player.keys.get("FLY")?.isDown) {
       this.changeState(new FlyState(this.player));
     }
   }

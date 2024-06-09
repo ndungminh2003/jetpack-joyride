@@ -1,0 +1,82 @@
+{
+  "preload": {
+    "files": [
+      {
+        "type": "tilemapTiledJSON",
+        "key": "map",
+        "url": "assets/atlas/Forest_Map.json"
+      },
+      {
+        "type": "image",
+        "key": "forest",
+        "url": "assets/atlas/forest_assets.png"
+      },
+      {
+        "type": "json",
+        "key": "animationJSON",
+        "url": "./assets/animations/animations.json"
+      },
+      {
+        "type": "spritesheet",
+        "key": "player-body",
+        "url": "./assets/Characters/Barry/defaultBody.png",
+        "frameConfig": {
+          "frameWidth": 32,
+          "frameHeight": 32
+        }
+      },
+      {
+        "type": "spritesheet",
+        "key": "player-head",
+        "url": "./assets/Characters/Barry/defaultHead.png",
+        "frameConfig": {
+          "frameWidth": 32,
+          "frameHeight": 32
+        }
+      },
+      {
+        "type": "spritesheet",
+        "key": "jetpack",
+        "url": "./assets/Characters/Jetpacks/jetpackDefault.png",
+        "frameConfig": {
+          "frameWidth": 32,
+          "frameHeight": 44
+        }
+      },
+      {
+        "type": "spritesheet",
+        "key": "bulletFlash",
+        "url": "./assets/Characters/Effects/bulletFlash_TVOS.png",
+        "frameConfig": {
+          "frameWidth": 64,
+          "frameHeight": 64
+        }
+      },
+      {
+        "type": "spritesheet",
+        "key": "bulletSplash",
+        "url": "./assets/Characters/Effects/bulletSplash_TVOS.png",
+        "frameConfig": {
+          "frameWidth": 64,
+          "frameHeight": 64
+        }
+      },
+
+      {
+        "type": "spritesheet",
+        "key": "zapper",
+        "url": "./assets/Obstacles/Zapper/RegularZappers/zapEffects.png",
+        "frameConfig": {
+          "frameWidth": 1024,
+          "frameHeight": 117
+        }
+      },
+
+      {
+        "type": "image",
+        "key": "bullet",
+        "url": "./assets/Characters/Effects/effect_smgbullet_x2.png"
+      }
+    ]
+  }
+}

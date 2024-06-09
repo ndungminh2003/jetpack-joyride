@@ -1,0 +1,140 @@
+{
+  "anims": [
+    {
+      "key": "jetpack-run",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "jetpack",
+        "start": 0,
+        "end": 3
+      },
+      "repeat": -1,
+      "frameRate": 10
+    },
+    {
+      "key": "body-run",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "player-body",
+        "start": 0,
+        "end": 3
+      },
+      "repeat": -1,
+      "frameRate": 10
+    },
+    {
+      "key": "head-run",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "player-head",
+        "start": 0,
+        "end": 3
+      },
+      "repeat": -1,
+      "frameRate": 10
+    },
+
+    {
+      "key": "jetpack-fly",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "jetpack",
+        "start": 4,
+        "end": 7
+      },
+      "repeat": -1,
+      "frameRate": 10
+    },
+    {
+      "key": "body-fly",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "player-body",
+        "start": 4,
+        "end": 7
+      },
+      "repeat": -1,
+      "frameRate": 10
+    },
+    {
+      "key": "head-fly",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "player-head",
+        "start": 4,
+        "end": 7
+      },
+      "repeat": -1,
+      "frameRate": 10
+    },
+
+    {
+      "key": "jetpack-fall",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "jetpack",
+        "start": 8,
+        "end": 11
+      },
+      "repeat": 0,
+      "frameRate": 10
+    },
+    {
+      "key": "body-fall",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "player-body",
+        "start": 8,
+        "end": 11
+      },
+      "repeat": 0,
+      "frameRate": 10
+    },
+    {
+      "key": "head-fall",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "player-head",
+        "start": 8,
+        "end": 11
+      },
+      "repeat": 0,
+      "frameRate": 10
+    },
+
+    {
+      "key": "bulletFlash",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "bulletFlash",
+        "start": 0,
+        "end": 3
+      },
+      "repeat": -1,
+      "frameRate": 10
+    },
+    {
+      "key": "bulletSplash",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "bulletSplash",
+        "start": 0,
+        "end": 3
+      },
+      "repeat": 0,
+      "frameRate": 10
+    },
+
+    {
+      "key": "zapEffect",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "zapper",
+        "start": 0,
+        "end": 3
+      },
+      "repeat": -1,
+      "frameRate": 10
+    }
+  ]
+}

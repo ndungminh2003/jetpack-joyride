@@ -23,7 +23,7 @@ const config: Types.Core.GameConfig = {
     default: "arcade",
     arcade: {
       gravity: { x: 10, y: 500 },
-      debug: true,
+      debug: false,
     },
   },
   scene: [Boot, Preloader, MainMenu, MainGame, GameOver],
