@@ -10,8 +10,8 @@ import { Game, Types } from "phaser";
 //  https://newdocs.phaser.io/docs/3.70.0/Phaser.Types.Core.GameConfig
 const config: Types.Core.GameConfig = {
   type: Phaser.AUTO, // Phaser.AUTO, Phaser.CANVAS, Phaser.HEADLESS, Phaser.WEBGL
-  width: window.innerWidth,
-  height: window.innerHeight,
+  width: 1365,
+  height: 768   ,
   parent: "game-container",
   backgroundColor: "#ffffff",
   scale: {
@@ -22,8 +22,8 @@ const config: Types.Core.GameConfig = {
   physics: {
     default: "arcade",
     arcade: {
-      gravity: { x: 10, y: 500 },
-      debug: false,
+      gravity: { x: 10 , y: 500 },
+      debug: true,
     },
   },
   scene: [Boot, Preloader, MainMenu, MainGame, GameOver],

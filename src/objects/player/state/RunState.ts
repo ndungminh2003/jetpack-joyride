@@ -8,20 +8,11 @@ export class RunState extends BaseState {
   }
 
   public update(): void {
-    (this.player.getChildByName("body") as Phaser.GameObjects.Sprite).play(
-      "body-run",
-      true
-    );
-    (this.player.getChildByName("head") as Phaser.GameObjects.Sprite).play(
-      "head-run",
-      true
-    );
-    (this.player.getChildByName("jetpack") as Phaser.GameObjects.Sprite).play(
-      "jetpack-run",
-      true
-    );
+    this.player.getPlayerBody().play("body-run", true);
+    this.player.getPlayerHead().play("head-run", true);
+    this.player.getJetpack().play("jetpack-run", true);
 
-    if (this.player.keys.get("FLY")?.isDown) {
+    if (this.player.getKeys().get("FLY")?.isDown) {
       this.changeState(new FlyState(this.player));
     }
   }

@@ -15,8 +15,8 @@ export class Preloader extends Scene {
 
   init() {
     //  load the background image from boot scene
-    this.add.image(window.innerWidth / 2, window.innerHeight / 2, "background");
-    this.cameras.main.setZoom(window.innerWidth / 1365);
+    this.add.image(512, 384, "background");
+    // this.cameras.main.setZoom(window.innerWidth / 1365);
   }
 
   preload() {

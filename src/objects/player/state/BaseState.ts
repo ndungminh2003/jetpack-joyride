@@ -9,6 +9,6 @@ export abstract class BaseState {
   public abstract update(): void;
 
   public changeState(state: BaseState): void {
-    this.player.currentState = state;
+    this.player.setCurrentState(state);
   }
 }

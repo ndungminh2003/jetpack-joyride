@@ -1,9 +1,11 @@
 class Bullet extends Phaser.Physics.Arcade.Image {
   declare body: Phaser.Physics.Arcade.Body;
 
-  public fire(x: number, y: number, vx: number, vy: number) {
+  public fire(x: number, y: number, vx: number, vy: number, angle: number) {
     this.enableBody(true, x, y, true, true);
     this.setVelocity(vx, vy);
+
+    this.rotation = Math.PI / 2 - angle;
   }
 
   public onCreate() {
@@ -30,11 +32,11 @@ export class Bullets extends Phaser.Physics.Arcade.Group {
     });
   }
 
-  public fire(x: number, y: number, vx: number, vy: number) {
+  public fire(x: number, y: number, vx: number, vy: number, angle: number) {
     const bullet = this.getFirstDead(false);
 
     if (bullet) {
-      bullet.fire(x, y, vx, vy);
+      bullet.fire(x, y, vx, vy, angle);
     }
   }
 

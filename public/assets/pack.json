@@ -3,13 +3,23 @@
     "files": [
       {
         "type": "tilemapTiledJSON",
-        "key": "map",
+        "key": "Forest",
         "url": "assets/atlas/Forest_Map.json"
       },
       {
         "type": "image",
-        "key": "forest",
+        "key": "Forest_tileset",
         "url": "assets/atlas/forest_assets.png"
+      },
+      {
+        "type": "tilemapTiledJSON",
+        "key": "Aqua",
+        "url": "assets/atlas/Aqua_Map.json"
+      },
+      {
+        "type": "image",
+        "key": "Aqua_tileset",
+        "url": "assets/atlas/aquarium_assets.png"
       },
       {
         "type": "json",
@@ -61,7 +71,11 @@
           "frameHeight": 64
         }
       },
-
+      {
+        "type": "image",
+        "key": "bullet",
+        "url": "./assets/Characters/Effects/effect_smgbullet_x2.png"
+      },
       {
         "type": "spritesheet",
         "key": "zapper",
@@ -71,11 +85,73 @@
           "frameHeight": 117
         }
       },
-
       {
         "type": "image",
-        "key": "bullet",
-        "url": "./assets/Characters/Effects/effect_smgbullet_x2.png"
+        "key": "zapper1",
+        "url": "./assets/Obstacles/Zapper/RegularZappers/zapEffect.png"
+      },
+      {
+        "type": "spritesheet",
+        "key": "missile",
+        "url": "./assets/Obstacles/Missile/missile.png",
+        "frameConfig": {
+          "frameWidth": 32,
+          "frameHeight": 32
+        }
+      },
+      {
+        "type": "spritesheet",
+        "key": "missileEffect",
+        "url": "./assets/Obstacles/Missile/missileEffects.png",
+        "frameConfig": {
+          "frameWidth": 64,
+          "frameHeight": 64
+        }
+      },
+      {
+        "type": "spritesheet",
+        "key": "missileAlert",
+        "url": "./assets/Obstacles/Missile/missileAlert.png",
+        "frameConfig": {
+          "frameWidth": 64,
+          "frameHeight": 64
+        }
+      },
+      {
+        "type": "spritesheet",
+        "key": "missileAlert",
+        "url": "./assets/Obstacles/Missile/missileAlert.png",
+        "frameConfig": {
+          "frameWidth": 64,
+          "frameHeight": 64
+        }
+      },
+      {
+        "type": "spritesheet",
+        "key": "missileExplosion",
+        "url": "./assets/Obstacles/Missile/missileExplosion.png",
+        "frameConfig": {
+          "frameWidth": 64,
+          "frameHeight": 64
+        }
+      },
+      {
+        "type": "spritesheet",
+        "key": "zapperGlow",
+        "url": "./assets/Obstacles/Zapper/RegularZappers/glow.png",
+        "frameConfig": {
+          "frameWidth": 128,
+          "frameHeight": 128
+        }
+      },
+      {
+        "type": "spritesheet",
+        "key": "zapperOrAnim",
+        "url": "./assets/Obstacles/Zapper/orbAnim.png",
+        "frameConfig": {
+          "frameWidth": 62,
+          "frameHeight": 42
+        }
       }
     ]
   }
