@@ -11,7 +11,7 @@ import { Game, Types } from "phaser";
 const config: Types.Core.GameConfig = {
   type: Phaser.AUTO, // Phaser.AUTO, Phaser.CANVAS, Phaser.HEADLESS, Phaser.WEBGL
   width: 1365,
-  height: 768   ,
+  height: 768,
   parent: "game-container",
   backgroundColor: "#ffffff",
   scale: {
@@ -22,7 +22,7 @@ const config: Types.Core.GameConfig = {
   physics: {
     default: "arcade",
     arcade: {
-      gravity: { x: 10 , y: 500 },
+      gravity: { x: 10, y: 500 },
       debug: true,
     },
   },

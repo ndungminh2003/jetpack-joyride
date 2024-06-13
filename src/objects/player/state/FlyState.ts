@@ -26,7 +26,7 @@ export class FlyState extends BaseState {
         this.player
           .getBullets()
           .fire(
-            this.player.x + this.player.getBulletFlash().width / 2 + 5,
+            this.player.x,
             this.player.y +
               this.player.getJetpack().height +
               +this.player.getBulletFlash().height +

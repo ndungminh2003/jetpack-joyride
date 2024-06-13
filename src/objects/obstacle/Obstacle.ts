@@ -1,11 +1,12 @@
+import { Player } from "../player/Player";
+
 export abstract class Obstacle extends Phaser.GameObjects.Container {
   declare body: Phaser.Physics.Arcade.Body;
-  public currentScene: Phaser.Scene;
+  private currentScene: Phaser.Scene;
 
   constructor(scene: Phaser.Scene, x: number, y: number) {
     super(scene, x, y);
     this.currentScene = scene;
-
     this.init();
   }
 
@@ -15,4 +16,5 @@ export abstract class Obstacle extends Phaser.GameObjects.Container {
     this.scene.add.existing(this);
   }
 
+  abstract handleCollide(player : Player): void;
 }

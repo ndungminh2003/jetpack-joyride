@@ -25,16 +25,16 @@ export class Player extends Phaser.GameObjects.Container {
   private init() {
     //init sprite to add in container
     this.playerHead = this.currentScene.add
-      .sprite(28, 13, "player-head")
+      .sprite(28 - 15, 13 - 5, "player-head")
       .setName("head");
     this.playerBody = this.currentScene.add
-      .sprite(28, 25, "player-body")
+      .sprite(28 - 15, 25 - 5, "player-body")
       .setName("body");
     this.jetpack = this.currentScene.add
-      .sprite(15, 22, "jetpack")
+      .sprite(15 - 15, 22 - 5, "jetpack")
       .setName("jetpack");
     this.bulletFlash = this.currentScene.add
-      .sprite(15, 52, "bulletFlash")
+      .sprite(15 - 15, 52 - 5, "bulletFlash")
       .setName("bulletFlash");
 
     this.add([
@@ -51,11 +51,11 @@ export class Player extends Phaser.GameObjects.Container {
     // this.body.collideWorldBounds = true
 
     //set properties
-    this.getChildByName("bulletFlash")?.setVisible(false);
-    this.body.setSize(40, 40);
+    this.bulletFlash.setVisible(false);
+    this.body.setSize(15, 30);
     this.setScale(2);
-    this.getChildByName("bulletFlash")?.setScale(0.5);
-    this.body.setVelocityX(300);
+    this.bulletFlash.setScale(0.5);
+    this.body.setVelocityX(100);
 
     //create bullet
     this.bullets = this.currentScene.add.existing(
@@ -79,10 +79,6 @@ export class Player extends Phaser.GameObjects.Container {
 
   public update(): void {
     this.currentState.update();
-  }
-
-  public getChildByName(name: string): Phaser.GameObjects.Sprite {
-    return this.getByName(name) as Phaser.GameObjects.Sprite;
   }
 
   public setCurrentState(state: BaseState): void {

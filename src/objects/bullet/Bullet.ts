@@ -49,4 +49,21 @@ export class Bullets extends Phaser.Physics.Arcade.Group {
       true
     )} inactive=${this.countActive(false)}`;
   }
+
+  public handleBulletCollideWithGround(bullet: Phaser.Physics.Arcade.Image) {
+    const bulletPos = bullet.getCenter();
+
+    const splash = this.scene.add.sprite(
+      bulletPos.x,
+      bulletPos.y,
+      "bulletSplash"
+    );
+    splash.play("bulletSplash");
+
+    bullet.disableBody(true, true);
+
+    splash.on("animationcomplete", () => {
+      splash.destroy();
+    });
+  }
 }

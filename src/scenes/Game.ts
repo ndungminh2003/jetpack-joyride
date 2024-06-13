@@ -35,7 +35,7 @@ export class Game extends Scene {
     this.player = new Player(this, 200, 0);
 
     this.zapper = new Zapper(this, 400, 300);
-    // this.zapper.rotation = Math.PI / 4
+    this.zapper.setRotation(Math.PI / 4);
 
     this.physics.add.collider(this.player, this.obstacle, () => {
       this.scene.start("GameOver");
@@ -48,10 +48,20 @@ export class Game extends Scene {
         this.player.getBullets(),
         this.ground,
         (bullet, _) => {
-          this.handleBulletCollide(bullet as Phaser.Physics.Arcade.Image);
+          this.player
+            .getBullets()
+            .handleBulletCollideWithGround(
+              bullet as Phaser.Physics.Arcade.Image
+            );
         }
       );
     }
+
+    this.zapper.getCircleCollisions().forEach((circle) => {
+      this.physics.add.collider(this.player, circle, () => {
+        this.zapper.handleCollide(this.player);
+      });
+    });
 
     this.physics.world.on("worldbounds", (body: any) => {
       body.gameObject.onWorldBounds();
@@ -85,74 +95,28 @@ export class Game extends Scene {
           this.player.getBullets(),
           this.ground,
           (bullet, _) => {
-            this.handleBulletCollide(bullet as Phaser.Physics.Arcade.Image);
+            this.player
+              .getBullets()
+              .handleBulletCollideWithGround(
+                bullet as Phaser.Physics.Arcade.Image
+              );
           }
         );
       }
     }
 
     if (Math.random() < 0.005) {
-      let missileAlert = this.physics.add.sprite(
+      let missile = new Missile(
+        this,
         this.cameras.main.scrollX + this.cameras.main.width - 50,
         this.player.y + this.player.body.height / 4,
-        "missileAlert"
+        this.player.body.velocity.x
       );
 
-      missileAlert.setVelocityX(this.player.body.velocity.x);
-
-      missileAlert.body.setAllowGravity(false);
-
-      this.add.existing(missileAlert);
-
-      missileAlert.play("missileAllertEffect1");
-
-      missileAlert.on("animationcomplete-missileAllertEffect1", () => {
-        missileAlert.play("missileAllertEffect2");
-
-        missileAlert.on("animationcomplete-missileAllertEffect2", () => {
-          let obstacle = new Missile(
-            this,
-            this.cameras.main.scrollX + this.cameras.main.width,
-            missileAlert.y
-          );
-
-          missileAlert.destroy();
-
-          this.physics.add.collider(this.player, obstacle, () => {
-            let missileExplosion = this.add.sprite(
-              this.player.x + this.player.body.width,
-              this.player.y + this.player.body.height / 2,
-              "missileExplosion"
-            );
-
-            missileExplosion.play("missileExplosionEffect");
-            obstacle.destroy();
-            this.player.body.setVelocityX(0);
-
-            // this.player.currentState.changeState(new DieState(this.player))
-          });
-        });
-      });
+      console.log(missile);
     }
 
     this.player.update();
-  }
-
-  private handleBulletCollide(bullet: Phaser.Physics.Arcade.Image) {
-    // Get the bullet's position
-    const bulletPos = bullet.getCenter();
-
-    // Create the bullet splash animation at the bullet's position
-    const splash = this.add.sprite(bulletPos.x, bulletPos.y, "bulletSplash");
-    splash.play("bulletSplash");
-
-    // Destroy the bullet
-    bullet.disableBody(true, true);
-
-    // Destroy the splash animation after it finishes
-    splash.on("animationcomplete", () => {
-      splash.destroy();
-    });
   }
 
   private genMap(maptype: string) {
