@@ -14,9 +14,12 @@ export class Preloader extends Scene {
   }
 
   init() {
-    //  load the background image from boot scene
-    this.add.image(512, 384, "background");
-    // this.cameras.main.setZoom(window.innerWidth / 1365);
+    let image = this.add.image(0, 0, "background");
+    image.setOrigin(0.5, 0.5); // set origin to center of image
+    image.setPosition(
+      this.cameras.main.width / 2,
+      this.cameras.main.height / 2
+    );
   }
 
   preload() {
@@ -29,10 +32,10 @@ export class Preloader extends Scene {
         this.progressBar.clear();
         this.progressBar.fillStyle(0x88e453, 1);
         this.progressBar.fillRect(
-          window.innerWidth / 4,
-          window.innerHeight - 50,
-          (this.cameras.main.width / 2) * value,
-          16
+          this.cameras.main.width * 0.2,
+          this.cameras.main.height * 0.8,
+          ((this.cameras.main.width * 0.6) / 2) * value,
+          20
         );
       },
       this
@@ -63,9 +66,9 @@ export class Preloader extends Scene {
     this.loadingBar = this.add.graphics();
     this.loadingBar.fillStyle(0xffffff, 1);
     this.loadingBar.fillRect(
-      window.innerWidth / 4,
-      window.innerHeight - 50,
-      this.cameras.main.width / 2 + 4,
+      this.cameras.main.width * 0.2,
+      this.cameras.main.height * 0.8,
+      this.cameras.main.width * 0.6,
       20
     );
     this.progressBar = this.add.graphics();

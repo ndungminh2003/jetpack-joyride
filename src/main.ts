@@ -22,7 +22,7 @@ const config: Types.Core.GameConfig = {
   physics: {
     default: "arcade",
     arcade: {
-      gravity: { x: 10, y: 500 },
+      gravity: { x: 0, y: 1000 },
       debug: true,
     },
   },

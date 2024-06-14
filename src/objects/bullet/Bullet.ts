@@ -58,6 +58,7 @@ export class Bullets extends Phaser.Physics.Arcade.Group {
       bulletPos.y,
       "bulletSplash"
     );
+    splash.setDepth(100);
     splash.play("bulletSplash");
 
     bullet.disableBody(true, true);

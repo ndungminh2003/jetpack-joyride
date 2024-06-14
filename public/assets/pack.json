@@ -3,13 +3,13 @@
     "files": [
       {
         "type": "tilemapTiledJSON",
-        "key": "Forest",
-        "url": "assets/atlas/Forest_Map.json"
+        "key": "Hallway",
+        "url": "assets/atlas/Hallway_Map.json"
       },
       {
         "type": "image",
-        "key": "Forest_tileset",
-        "url": "assets/atlas/forest_assets.png"
+        "key": "Hallway_tileset",
+        "url": "assets/atlas/Hallway_assets.png"
       },
       {
         "type": "tilemapTiledJSON",
@@ -20,6 +20,46 @@
         "type": "image",
         "key": "Aqua_tileset",
         "url": "assets/atlas/aquarium_assets.png"
+      },
+      {
+        "type": "image",
+        "key": "Cave_tileset",
+        "url": "assets/atlas/cave_assets.png"
+      },
+      {
+        "type": "tilemapTiledJSON",
+        "key": "Cave",
+        "url": "assets/atlas/Cave_Map.json"
+      },
+      {
+        "type": "image",
+        "key": "Cave1",
+        "url": "assets/atlas/Cave1.png"
+      },
+      {
+        "type": "tilemapTiledJSON",
+        "key": "Forest",
+        "url": "assets/atlas/Forest_Map.json"
+      },
+      {
+        "type": "image",
+        "key": "Forest1",
+        "url": "assets/atlas/Forest1.png"
+      },
+      {
+        "type": "image",
+        "key": "Forest2",
+        "url": "assets/atlas/Forest2.png"
+      },
+      {
+        "type": "image",
+        "key": "Forest3",
+        "url": "assets/atlas/Forest3.png"
+      },
+      {
+        "type": "image",
+        "key": "Forest_tileset",
+        "url": "assets/atlas/forest_assets.png"
       },
       {
         "type": "json",
@@ -151,6 +191,42 @@
         "frameConfig": {
           "frameWidth": 62,
           "frameHeight": 42
+        }
+      },
+      {
+        "type": "spritesheet",
+        "key": "worker1Body",
+        "url": "./assets/workers/worker1Body.png",
+        "frameConfig": {
+          "frameWidth": 32,
+          "frameHeight": 32
+        }
+      },
+      {
+        "type": "spritesheet",
+        "key": "worker1Head",
+        "url": "./assets/workers/worker1Head.png",
+        "frameConfig": {
+          "frameWidth": 32,
+          "frameHeight": 32
+        }
+      },
+      {
+        "type": "spritesheet",
+        "key": "worker2Body",
+        "url": "./assets/workers/worker2Body.png",
+        "frameConfig": {
+          "frameWidth": 32,
+          "frameHeight": 32
+        }
+      },
+      {
+        "type": "spritesheet",
+        "key": "worker2Head",
+        "url": "./assets/workers/worker2Head.png",
+        "frameConfig": {
+          "frameWidth": 32,
+          "frameHeight": 32
         }
       }
     ]

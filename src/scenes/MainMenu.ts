@@ -10,7 +10,12 @@ export class MainMenu extends Scene {
   }
 
   create() {
-    this.background = this.add.image(512, 384, "background");
+    let image = this.add.image(0, 0, "background");
+    image.setOrigin(0.5, 0.5); // set origin to center of image
+    image.setPosition(
+      this.cameras.main.width / 2,
+      this.cameras.main.height / 2
+    );  
 
 
     // this.title = this.add

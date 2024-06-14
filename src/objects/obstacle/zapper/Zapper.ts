@@ -18,6 +18,7 @@ export class Zapper extends Obstacle {
   override init(): void {
     super.init();
 
+    this.setDepth(100);
     this.circleCollisions = [];
     this.createCircles();
 
@@ -73,11 +74,15 @@ export class Zapper extends Obstacle {
     this.zapper.tilePositionX += 10;
   }
 
-  public getCircleCollisions(): Phaser.GameObjects.Arc[] {
+  private getCircleCollisions(): Phaser.GameObjects.Arc[] {
     return this.circleCollisions;
   }
 
-  public handleCollide(player : Player): void {
-    console.log(player);
+  public addCollide(player: Player): void {
+    this.getCircleCollisions().forEach((circle) => {
+      this.scene.physics.add.collider(player, circle, () => {
+        console.log("abc");
+      });
+    });
   }
 }

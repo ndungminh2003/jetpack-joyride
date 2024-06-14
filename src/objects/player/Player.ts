@@ -24,18 +24,10 @@ export class Player extends Phaser.GameObjects.Container {
 
   private init() {
     //init sprite to add in container
-    this.playerHead = this.currentScene.add
-      .sprite(28 - 15, 13 - 5, "player-head")
-      .setName("head");
-    this.playerBody = this.currentScene.add
-      .sprite(28 - 15, 25 - 5, "player-body")
-      .setName("body");
-    this.jetpack = this.currentScene.add
-      .sprite(15 - 15, 22 - 5, "jetpack")
-      .setName("jetpack");
-    this.bulletFlash = this.currentScene.add
-      .sprite(15 - 15, 52 - 5, "bulletFlash")
-      .setName("bulletFlash");
+    this.playerHead = this.currentScene.add.sprite(13, 8, "player-head");
+    this.playerBody = this.currentScene.add.sprite(13, 20, "player-body");
+    this.jetpack = this.currentScene.add.sprite(0, 17, "jetpack");
+    this.bulletFlash = this.currentScene.add.sprite(0, 47, "bulletFlash");
 
     this.add([
       this.playerHead,
@@ -48,6 +40,7 @@ export class Player extends Phaser.GameObjects.Container {
     this.currentState = new RunState(this);
     this.currentScene.physics.world.enable(this);
     this.currentScene.add.existing(this);
+    this.body.setImmovable(true)
     // this.body.collideWorldBounds = true
 
     //set properties

@@ -8,7 +8,6 @@ export class FlyState extends BaseState {
   }
 
   public update(): void {
-    
     this.player.body.setVelocityY(-200);
     this.player.getBulletFlash().setVisible(true);
     this.player.getPlayerBody().play("body-fly", true);

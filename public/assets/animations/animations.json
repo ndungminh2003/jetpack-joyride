@@ -107,8 +107,8 @@
         "start": 20,
         "end": 31
       },
-      "repeat": 1,
-      "frameRate": 5
+      "repeat": 0,
+      "frameRate": 10
     },
     {
       "key": "head-die",
@@ -118,8 +118,8 @@
         "start": 20,
         "end": 31
       },
-      "repeat": 1,
-      "frameRate": 5
+      "repeat": 0,
+      "frameRate": 10
     },
     {
       "key": "bulletFlash",
@@ -241,6 +241,94 @@
       },
       "repeat": 1,
       "frameRate": 30
+    },
+    {
+      "key": "worker-body-walk",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "worker1Body",
+        "start": 0,
+        "end": 3
+      },
+      "repeat": -1,
+      "frameRate": 10
+    },
+    {
+      "key": "worker-head-walk",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "worker1Head",
+        "start": 0,
+        "end": 3
+      },
+      "repeat": -1,
+      "frameRate": 10
+    },
+    {
+      "key": "worker-body-walk-1",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "worker2Body",
+        "start": 0,
+        "end": 3
+      },
+      "repeat": -1,
+      "frameRate": 10
+    },
+    {
+      "key": "worker-head-walk-1",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "worker2Head",
+        "start": 0,
+        "end": 3
+      },
+      "repeat": -1,
+      "frameRate": 10
+    },
+    {
+      "key": "worker-body-run",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "worker1Body",
+        "start": 4,
+        "end": 6
+      },
+      "repeat": -1,
+      "frameRate": 15
+    },
+    {
+      "key": "worker-head-run",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "worker1Head",
+        "start": 4,
+        "end": 6
+      },
+      "repeat": -1,
+      "frameRate": 15
+    },
+    {
+      "key": "worker-body-run-1",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "worker2Body",
+        "start": 4,
+        "end": 6
+      },
+      "repeat": -1,
+      "frameRate": 15
+    },
+    {
+      "key": "worker-head-run-1",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "worker2Head",
+        "start": 4,
+        "end": 6
+      },
+      "repeat": -1,
+      "frameRate": 15
     }
   ]
 }
