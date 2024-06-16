@@ -6,6 +6,7 @@ export abstract class Obstacle extends Phaser.GameObjects.Container {
   constructor(scene: Phaser.Scene, x: number, y: number) {
     super(scene, x, y);
     this.init();
+    this.setDepth(Infinity)
   }
 
   protected init(): void {

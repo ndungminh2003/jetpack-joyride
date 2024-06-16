@@ -18,7 +18,7 @@ export class Zapper extends Obstacle {
   override init(): void {
     super.init();
 
-    this.setDepth(100);
+
     this.circleCollisions = [];
     this.createCircles();
 

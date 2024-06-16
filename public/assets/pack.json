@@ -18,6 +18,21 @@
       },
       {
         "type": "image",
+        "key": "Aqua1",
+        "url": "assets/atlas/Aqua1.png"
+      },
+      {
+        "type": "image",
+        "key": "Aqua2",
+        "url": "assets/atlas/Aqua2.png"
+      },
+      {
+        "type": "image",
+        "key": "Aqua3",
+        "url": "assets/atlas/Aqua3.png"
+      },
+      {
+        "type": "image",
         "key": "Aqua_tileset",
         "url": "assets/atlas/aquarium_assets.png"
       },

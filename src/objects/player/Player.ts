@@ -1,5 +1,6 @@
 import { Bullets } from "../bullet/Bullet";
 import { BaseState } from "./state/BaseState";
+import { DieState } from "./state/DieState";
 import { RunState } from "./state/RunState";
 
 export class Player extends Phaser.GameObjects.Container {
@@ -40,7 +41,7 @@ export class Player extends Phaser.GameObjects.Container {
     this.currentState = new RunState(this);
     this.currentScene.physics.world.enable(this);
     this.currentScene.add.existing(this);
-    this.body.setImmovable(true)
+    this.body.setImmovable(true);
     // this.body.collideWorldBounds = true
 
     //set properties
@@ -48,7 +49,9 @@ export class Player extends Phaser.GameObjects.Container {
     this.body.setSize(15, 30);
     this.setScale(2);
     this.bulletFlash.setScale(0.5);
-    this.body.setVelocityX(100);
+    
+    this.body.velocity.x = 250;
+    this.body.maxVelocity.x = 550;
 
     //create bullet
     this.bullets = this.currentScene.add.existing(
@@ -71,8 +74,18 @@ export class Player extends Phaser.GameObjects.Container {
   }
 
   public update(): void {
-    this.currentState.update();
-  }
+
+    //if player is not dead update velocity
+
+    if(!(this.currentState instanceof DieState)){
+      this.body.velocity.x += 1;
+      this.currentState.update();
+    }
+    else{
+      this.currentState.update();
+    }
+
+}
 
   public setCurrentState(state: BaseState): void {
     this.currentState = state;

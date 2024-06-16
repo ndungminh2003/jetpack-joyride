@@ -329,6 +329,50 @@
       },
       "repeat": -1,
       "frameRate": 15
+    },
+    {
+      "key": "worker-body-die",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "worker1Body",
+        "start": 8,
+        "end": 15
+      },
+      "repeat": 0,
+      "frameRate": 15
+    },
+    {
+      "key": "worker-head-die",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "worker1Head",
+        "start": 8,
+        "end": 15
+      },
+      "repeat": 0,
+      "frameRate": 15
+    },
+    {
+      "key": "worker-body-die-1",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "worker2Body",
+        "start": 8,
+        "end": 15
+      },
+      "repeat": 0,
+      "frameRate": 15
+    },
+    {
+      "key": "worker-head-die-1",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "worker2Head",
+        "start": 8,
+        "end": 15
+      },
+      "repeat": 0,
+      "frameRate": 15
     }
   ]
 }

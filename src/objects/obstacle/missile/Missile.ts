@@ -15,7 +15,6 @@ export class Missile extends Obstacle {
     playerVelocityX: number
   ) {
     super(scene, x, y);
-    this.setDepth(100);
     this.body.setVelocityX(playerVelocityX);
     this.warning(x, y, playerVelocityX);
   }
@@ -27,14 +26,14 @@ export class Missile extends Obstacle {
       .setVelocityX(playerVelocityX)
       .setAllowGravity(false);
     this.scene.add.existing(this.missileAlert);
-    this.missileAlert.setDepth(100);
+    this.missileAlert.setDepth(Infinity);
         
     this.missileAlert.play("missileAllertEffect1", true);
 
-    this.missileAlert.on("animationcomplete-missileAllertEffect1", () => {
+    this.missileAlert.once("animationcomplete-missileAllertEffect1", () => {
       this.missileAlert.play("missileAllertEffect2", true);
 
-      this.missileAlert.on("animationcomplete-missileAllertEffect2", () => {
+      this.missileAlert.once("animationcomplete-missileAllertEffect2", () => {
         this.missileAlert.destroy();
         this.fireMissile();
       });
@@ -65,7 +64,7 @@ export class Missile extends Obstacle {
         player.y + player.body.height / 2,
         "missileExplosion"
       );
-      missileExplosion.setDepth(100);
+      missileExplosion.setDepth(Infinity);
       missileExplosion.play("missileExplosionEffect", true);
       this.scene.add.existing(missileExplosion);
 
@@ -73,8 +72,6 @@ export class Missile extends Obstacle {
       
       player.setCurrentState(new DieState(player))
       
-
-
     });
   }
 }

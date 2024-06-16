@@ -55,6 +55,24 @@ export class Game extends Scene {
       }
     );
 
+    
+
+    this.physics.add.collider(
+      this.player.getBullets(),
+      this.normalWorker,
+      () => {
+        this.normalWorker.handleCollide();
+      }
+    );
+
+    this.physics.add.collider(
+      this.player.getBullets(),
+      this.yellowWorker,
+      () => {
+        this.yellowWorker.handleCollide();
+      }
+    );
+
     this.physics.world.on("worldbounds", (body: any) => {
       body.gameObject.onWorldBounds();
     });
@@ -74,6 +92,9 @@ export class Game extends Scene {
 
   update() {
     this.zapper.loopZapper();
+    
+    this.normalWorker.update();
+    this.yellowWorker.update();  
 
     this.player.update();
     mapGenerator.update(this.player, this);
