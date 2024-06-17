@@ -1,46 +1,48 @@
-import { mapGenerator } from "../../manager/MapGenerator";
-import { Player } from "../../objects/player/Player";
-import { NormalWorker } from "../../objects/worker/NormalWorker";
-import { YellowWorker } from "../../objects/worker/YellowWorker";
-import { Zapper } from "../../objects/obstacle/zapper/Zapper";
-import { Missile } from "../../objects/obstacle/missile/Missile";
+import { Player } from "./../objects/player/Player";
+import { IGameManagerContructor } from "../types/IGameManagerContructor";
+import { MapGenerator } from "./MapGenerator";
+import { Zapper } from "../objects/obstacle/zapper/Zapper";
+import { Missile } from "../objects/obstacle/missile/Missile";
+import { NormalWorker } from "../objects/worker/NormalWorker";
+import { YellowWorker } from "../objects/worker/YellowWorker";
 
-export class MainGame extends Phaser.GameObjects.Container {
+export class GameManager {
+  private score: number = 0;
+  private scene: Phaser.Scene;
   private player: Player;
   private obstacleGroup: Phaser.GameObjects.Group;
   private workerGroup: Phaser.GameObjects.Group;
+  private mapGenerator: MapGenerator;
 
-  constructor(scene: Phaser.Scene) {
-    super(scene, 0, 0);
-    this.create();
-    this.setDepth(Infinity);
+  constructor(params: IGameManagerContructor) {
+    this.scene = params.scene;
+    this.player = params.player;
+    this.obstacleGroup = params.obstacleGroup;
+    this.workerGroup = params.workerGroup;
+    this.mapGenerator = params.mapGenerator;
+    this.init();
   }
 
-  public create() {
-    this.scene.physics.world.enable(this);
-
-    // Create player
-    this.player = new Player(this.scene, 100, 550);
-
+  private init() {
     // Create map and set up world bounds
-    mapGenerator.generateMap(
-      mapGenerator.getMapName(0),
+    this.mapGenerator.generateMap(
+      this.mapGenerator.getMapName(0),
       this.scene,
       this.player
     );
-    mapGenerator.parallex(this.scene);
+    this.mapGenerator.parallex(this.scene);
     this.scene.physics.world.setBounds(
       0,
       0,
       Infinity,
-      mapGenerator.getMap().heightInPixels
+      this.mapGenerator.getMap().heightInPixels
     );
 
     // Set up player collisions with ground
-    this.scene.physics.add.collider(this.player, mapGenerator.getGround());
+    this.scene.physics.add.collider(this.player, this.mapGenerator.getGround());
     this.scene.physics.add.collider(
       this.player.getBullets(),
-      mapGenerator.getGround(),
+      this.mapGenerator.getGround(),
       (bullet, _) => {
         this.player
           .getBullets()
@@ -59,21 +61,12 @@ export class MainGame extends Phaser.GameObjects.Container {
       0,
       0,
       Infinity,
-      mapGenerator.getMap().heightInPixels
+      this.mapGenerator.getMap().heightInPixels
     );
 
     // Set player and bullet depths
     this.player.setDepth(Infinity);
     this.player.getBullets().setDepth(Infinity);
-
-    // Add this container to the scene
-    this.scene.add.existing(this);
-
-    // Initialize obstacle group
-    this.obstacleGroup = this.scene.add.group();
-
-    // Initialize worker group
-    this.workerGroup = this.scene.add.group();
 
     // Timed generation of obstacles and workers
     this.scene.time.addEvent({
@@ -91,11 +84,18 @@ export class MainGame extends Phaser.GameObjects.Container {
     });
   }
 
+  public setScore(score: number) {
+    this.score = score;
+  }
 
-  update(time: number, delta: number) {
-    // Update player and map generator
-    this.player.update(time, delta);
-    mapGenerator.update(this.player, this.scene);
+  public getScore() {
+    return this.score;
+  }
+
+  public update(time: number, delta: number) {
+    console.log(time, delta);
+
+    this.mapGenerator.update(this.player, this.scene);
 
     const cameraX = this.scene.cameras.main.scrollX;
 
@@ -174,9 +174,9 @@ export class MainGame extends Phaser.GameObjects.Container {
       const flipX = Phaser.Math.RND.between(0, 1) === 1; // Random flipX for this worker
       const worker = new NormalWorker(this.scene, action, xWorker, yWorker);
       worker.setFlipX(flipX); // Set flipX
-      
+
       // Set up collisions
-      this.scene.physics.add.collider(worker, mapGenerator.getGround());
+      this.scene.physics.add.collider(worker, this.mapGenerator.getGround());
       this.scene.physics.add.collider(this.player.getBullets(), worker, () => {
         worker.handleCollide();
       });
@@ -187,14 +187,15 @@ export class MainGame extends Phaser.GameObjects.Container {
         (bullet, _) => {
           this.player
             .getBullets()
-            .handleBulletCollideWithGround(bullet as Phaser.Physics.Arcade.Image);
+            .handleBulletCollideWithGround(
+              bullet as Phaser.Physics.Arcade.Image
+            );
         }
       );
-      
+
       // Add worker to group and scene
       this.workerGroup.add(worker);
       this.scene.add.existing(worker);
-
     }
 
     // Generate YellowWorkers
@@ -213,9 +214,9 @@ export class MainGame extends Phaser.GameObjects.Container {
         yWorkerYellow
       );
       worker.setFlipX(flipX); // Set flipX
-      
+
       // Set up collisions
-      this.scene.physics.add.collider(worker, mapGenerator.getGround());
+      this.scene.physics.add.collider(worker, this.mapGenerator.getGround());
       this.scene.physics.add.collider(this.player.getBullets(), worker, () => {
         worker.handleCollide();
       });
@@ -226,14 +227,14 @@ export class MainGame extends Phaser.GameObjects.Container {
         (bullet, _) => {
           this.player
             .getBullets()
-            .handleBulletCollideWithGround(bullet as Phaser.Physics.Arcade.Image);
+            .handleBulletCollideWithGround(
+              bullet as Phaser.Physics.Arcade.Image
+            );
         }
       );
       // Add worker to group and scene
       this.workerGroup.add(worker);
       this.scene.add.existing(worker);
-
-      
     }
   }
 }

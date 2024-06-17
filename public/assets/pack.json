@@ -257,6 +257,11 @@
         "type": "image",
         "key": "btn",
         "url": "./assets/UI/buttonBackingResult.png"
+      },
+      {
+        "type": "image",
+        "key": "btnPause",
+        "url": "./assets/UI/buttonPause.png"
       }
     ]
   }

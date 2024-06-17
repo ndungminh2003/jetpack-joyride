@@ -1,3 +1,4 @@
+
 export abstract class BaseWorker extends Phaser.GameObjects.Container {
   declare body: Phaser.Physics.Arcade.Body;
   protected workerHead: Phaser.GameObjects.Sprite;

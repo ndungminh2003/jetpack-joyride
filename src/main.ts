@@ -2,8 +2,11 @@ import { BootScene } from "./scenes/BootScene";
 import { GameScene } from "./scenes/GameScene";
 import { GameOverScene } from "./scenes/GameOverScene";
 import { MainMenuScene } from "./scenes/MainMenuScene";
-import { Preloader } from "./scenes/Preloader";
+import { Preloader } from "./scenes/PreloadScene";
 import { HUDScene } from "./scenes/HUDScene";
+import { PauseScene } from "./scenes/PauseScene";
+import { SettingScene } from "./scenes/SettingScene";
+
 
 import { Game, Types } from "phaser";
 
@@ -27,7 +30,7 @@ const config: Types.Core.GameConfig = {
       debug: true,
     },
   },
-  scene: [BootScene, Preloader, MainMenuScene, GameScene, GameOverScene, HUDScene],
+  scene: [BootScene, Preloader, MainMenuScene, GameScene, GameOverScene, HUDScene, PauseScene, SettingScene],
 };
 
 export default new Game(config);

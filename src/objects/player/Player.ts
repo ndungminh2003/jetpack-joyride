@@ -2,6 +2,7 @@ import { Bullets } from "../bullet/Bullet";
 import { BaseState } from "./state/BaseState";
 import { DieState } from "./state/DieState";
 import { RunState } from "./state/RunState";
+import { IContainerConstructor } from "../../types/IContainerConstructor";
 
 export class Player extends Phaser.GameObjects.Container {
   declare body: Phaser.Physics.Arcade.Body;
@@ -16,9 +17,9 @@ export class Player extends Phaser.GameObjects.Container {
   private jetpack: Phaser.GameObjects.Sprite;
   private bulletFlash: Phaser.GameObjects.Sprite;
 
-  constructor(scene: Phaser.Scene, x: number, y: number) {
-    super(scene, x, y);
-    this.currentScene = scene;
+  constructor(params: IContainerConstructor) {
+    super(params.scene, params.x, params.y);
+    this.currentScene = params.scene;
 
     this.init();
   }

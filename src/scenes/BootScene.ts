@@ -13,6 +13,6 @@ export class BootScene extends Scene {
   }
 
   create() {
-    this.scene.start("Preloader");
+    this.scene.start("PreloadScene");
   }
 }

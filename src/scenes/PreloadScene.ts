@@ -10,7 +10,7 @@ export class Preloader extends Scene {
   private progressBar: Phaser.GameObjects.Graphics;
 
   constructor() {
-    super("Preloader");
+    super("PreloadScene");
   }
 
   init() {

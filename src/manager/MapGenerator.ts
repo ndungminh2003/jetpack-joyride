@@ -2,7 +2,6 @@ import { Scene } from "phaser";
 import { Player } from "../objects/player/Player";
 
 export class MapGenerator {
-  private static instance: MapGenerator;
   private lv: number = 0;
   private map: Phaser.Tilemaps.Tilemap;
   private tileset: Phaser.Tilemaps.Tileset;
@@ -11,12 +10,7 @@ export class MapGenerator {
   private layers: { rationX: number; sprite: Phaser.GameObjects.TileSprite }[] =
     [];
   constructor() {}
-  public static getInstance(): MapGenerator {
-    if (!this.instance) {
-      return new MapGenerator();
-    }
-    return this.instance;
-  }
+
   public generateMap(maptype: string, scene: Scene, player: Player): void {
     this.map = scene.make.tilemap({
       key: maptype,
@@ -47,7 +41,7 @@ export class MapGenerator {
 
       scene.physics.add.collider(
         player.getBullets(),
-        mapGenerator.getGround(),
+        this.getGround(),
         (bullet, _) => {
           player
             .getBullets()
@@ -164,4 +158,3 @@ export class MapGenerator {
     this.updateLayer(player);
   }
 }
-export const mapGenerator = MapGenerator.getInstance();
