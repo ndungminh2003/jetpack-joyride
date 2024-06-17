@@ -6,14 +6,14 @@ export class DieState extends BaseState {
     super(player);
   }
 
-  public update(): void {
+  public update(time: number, delta: number): void {
+    console.log(time, delta);
     if (this.player.active) {
       this.player.rotation = Math.PI / 2;
-      
 
       this.player.getPlayerBody().play("body-die", true);
       this.player.getPlayerHead().play("head-die", true);
-      // adjut the position of the body in container
+
       this.player.getPlayerBody().y = 0;
       this.player.getPlayerHead().y = -10;
       this.player.getPlayerBody().x = 35;
@@ -23,10 +23,10 @@ export class DieState extends BaseState {
       this.player.getJetpack().destroy();
       this.player.getBulletFlash().destroy();
     }
-    if(this.player.body.velocity.x > 0){
+    if (this.player.body.velocity.x > 0) {
       this.player.body.velocity.x -= 2;
     }
-    if(this.player.body.velocity.x <= 0){
+    if (this.player.body.velocity.x <= 0) {
       this.player.body.velocity.x = 0;
     }
   }

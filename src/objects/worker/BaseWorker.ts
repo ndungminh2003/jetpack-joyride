@@ -3,7 +3,6 @@ export abstract class BaseWorker extends Phaser.GameObjects.Container {
   protected workerHead: Phaser.GameObjects.Sprite;
   protected workerBody: Phaser.GameObjects.Sprite;
 
-  
   protected action: string;
 
   constructor(scene: Phaser.Scene, action: string) {
@@ -20,13 +19,12 @@ export abstract class BaseWorker extends Phaser.GameObjects.Container {
     this.setScale(1.5);
   }
 
-
   protected abstract playAction(action: string): void;
 
   public handleCollide(): void {
     this.rotation = Math.PI / 2;
     this.setActive(false);
-    
+
     this.body.setVelocityX(0);
 
     this.scene.tweens.add({
@@ -39,6 +37,5 @@ export abstract class BaseWorker extends Phaser.GameObjects.Container {
     });
   }
 
-  public abstract update() : void
-
+  public abstract update(): void;
 }

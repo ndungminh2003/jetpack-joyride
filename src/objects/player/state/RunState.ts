@@ -7,7 +7,9 @@ export class RunState extends BaseState {
     super(player);
   }
 
-  public update(): void {
+  public update(time: number, delta : number): void {
+
+    console.log(time, delta)
     this.player.getPlayerBody().play("body-run", true);
     this.player.getPlayerHead().play("head-run", true);
     this.player.getJetpack().play("jetpack-run", true);

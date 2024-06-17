@@ -6,7 +6,7 @@ export abstract class Obstacle extends Phaser.GameObjects.Container {
   constructor(scene: Phaser.Scene, x: number, y: number) {
     super(scene, x, y);
     this.init();
-    this.setDepth(Infinity)
+    this.setDepth(Infinity);
   }
 
   protected init(): void {
@@ -16,6 +16,4 @@ export abstract class Obstacle extends Phaser.GameObjects.Container {
   }
 
   abstract addCollide(player: Player): void;
-
-  
 }

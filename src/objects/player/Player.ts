@@ -49,9 +49,14 @@ export class Player extends Phaser.GameObjects.Container {
     this.body.setSize(15, 30);
     this.setScale(2);
     this.bulletFlash.setScale(0.5);
-    
+
     this.body.velocity.x = 250;
     this.body.maxVelocity.x = 550;
+
+
+    this.body.velocity.y = 0;
+
+
 
     //create bullet
     this.bullets = this.currentScene.add.existing(
@@ -73,19 +78,17 @@ export class Player extends Phaser.GameObjects.Container {
     return this.currentScene.input.keyboard!.addKey(key);
   }
 
-  public update(): void {
-
+  public update(time : number , delta : number): void {
     //if player is not dead update velocity
 
-    if(!(this.currentState instanceof DieState)){
+    if (!(this.currentState instanceof DieState)) {
       this.body.velocity.x += 1;
-      this.currentState.update();
+      this.currentState.update(time, delta);
+    } 
+    else {
+      this.currentState.update(time, delta);
     }
-    else{
-      this.currentState.update();
-    }
-
-}
+  }
 
   public setCurrentState(state: BaseState): void {
     this.currentState = state;

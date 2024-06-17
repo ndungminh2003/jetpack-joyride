@@ -67,5 +67,4 @@ export class Bullets extends Phaser.Physics.Arcade.Group {
       splash.destroy();
     });
   }
-
 }

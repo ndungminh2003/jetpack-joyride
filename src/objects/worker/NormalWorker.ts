@@ -22,8 +22,7 @@ export class NormalWorker extends BaseWorker {
   }
 
   playAction(action: string): void {
-    if(this.active){
-
+    if (this.active) {
       this.workerBody.play("worker-body-" + action, true);
       this.workerHead.play("worker-head-" + action, true);
     }
@@ -31,7 +30,6 @@ export class NormalWorker extends BaseWorker {
 
   override handleCollide(): void {
     if (this.active) {
-
       this.action = "die";
       this.playAction(this.action);
       super.handleCollide();

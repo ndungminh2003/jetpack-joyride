@@ -8,9 +8,9 @@ export class FallState extends BaseState {
     super(player);
   }
 
-  public update(): void {
+  public update(time: number, delta: number): void {
+    console.log(time, delta);
     if (this.player.getFirstTimeFall()) {
-      
       this.player.body.setVelocityY(200);
 
       this.player.getPlayerBody().play("body-fall", true);
