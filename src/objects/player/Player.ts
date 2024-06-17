@@ -53,9 +53,7 @@ export class Player extends Phaser.GameObjects.Container {
     this.body.velocity.x = 250;
     this.body.maxVelocity.x = 550;
 
-
     this.body.velocity.y = 0;
-
 
 
     //create bullet

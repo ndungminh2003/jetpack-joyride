@@ -1,12 +1,12 @@
 import { Scene } from "phaser";
 
-export class GameOver extends Scene {
+export class GameOverScene extends Scene {
   camera: Phaser.Cameras.Scene2D.Camera;
   background: Phaser.GameObjects.Image;
   gameover_text: Phaser.GameObjects.Text;
 
   constructor() {
-    super("GameOver");
+    super("GameOverScene");
   }
 
   create() {
@@ -24,7 +24,7 @@ export class GameOver extends Scene {
     this.gameover_text.setOrigin(0.5);
 
     this.input.once("pointerdown", () => {
-      this.scene.start("MainMenu");
+      this.scene.start("MainMenuScene");
     });
   }
 }

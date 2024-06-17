@@ -1,8 +1,9 @@
-import { Boot } from "./scenes/Boot";
-import { Game as MainGame } from "./scenes/Game";
-import { GameOver } from "./scenes/GameOver";
-import { MainMenu } from "./scenes/MainMenu";
+import { BootScene } from "./scenes/BootScene";
+import { GameScene } from "./scenes/GameScene";
+import { GameOverScene } from "./scenes/GameOverScene";
+import { MainMenuScene } from "./scenes/MainMenuScene";
 import { Preloader } from "./scenes/Preloader";
+import { HUDScene } from "./scenes/HUDScene";
 
 import { Game, Types } from "phaser";
 
@@ -26,7 +27,7 @@ const config: Types.Core.GameConfig = {
       debug: true,
     },
   },
-  scene: [Boot, Preloader, MainMenu, MainGame, GameOver],
+  scene: [BootScene, Preloader, MainMenuScene, GameScene, GameOverScene, HUDScene],
 };
 
 export default new Game(config);

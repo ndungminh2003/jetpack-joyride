@@ -1,5 +1,7 @@
 import { Player } from "../../player/Player";
+import { DieState } from "../../player/state/DieState";
 import { Obstacle } from "../Obstacle";
+
 
 export class Zapper extends Obstacle {
   private circleCollisions: Phaser.GameObjects.Arc[];
@@ -15,12 +17,16 @@ export class Zapper extends Obstacle {
     this.init();
   }
 
-  override init(): void {
-    super.init();
-
+  public init(): void {
+    this.scene.physics.world.enable(this);
+    this.body.allowGravity = false;
+    this.scene.add.existing(this);
 
     this.circleCollisions = [];
     this.createCircles();
+
+    const rotation = Phaser.Math.FloatBetween(-Math.PI / 4, Math.PI / 4);
+    this.rotation = rotation;
 
     this.zapper = this.scene.add.tileSprite(512, 54, 1024, 117, "zapper1");
     this.zapGlowLeft = this.scene.add.sprite(0, 54, "zapperGlow").setScale(1.5);
@@ -53,7 +59,11 @@ export class Zapper extends Obstacle {
       ...this.circleCollisions, // Spread the circle collisions array
     ]);
 
-    this.setScale(0.4);
+    const scale = [0.3, 0.35];
+
+    // ramdom scale
+    this.setScale(scale[Phaser.Math.Between(0, 1)]);
+
     this.body.setImmovable(true);
   }
 
@@ -70,8 +80,9 @@ export class Zapper extends Obstacle {
     }
   }
 
-  public loopZapper(): void {
-    this.zapper.tilePositionX += 10;
+
+  public update(): void {
+    this.zapper.tilePositionX += 5;
   }
 
   private getCircleCollisions(): Phaser.GameObjects.Arc[] {
@@ -81,7 +92,13 @@ export class Zapper extends Obstacle {
   public addCollide(player: Player): void {
     this.getCircleCollisions().forEach((circle) => {
       this.scene.physics.add.collider(player, circle, () => {
-        console.log("abc");
+        let glowOff = this.scene.add.sprite(player.x, player.y, "zapperGlowOff");
+        glowOff.setDepth(Infinity);
+        glowOff.play("zapGlowOffEffect", true);
+        glowOff.setScale(0.5);
+        this.scene.add.existing(glowOff);
+        player.setCurrentState(new DieState(player));
+        
       });
     });
   }

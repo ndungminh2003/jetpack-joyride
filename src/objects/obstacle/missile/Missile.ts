@@ -15,6 +15,7 @@ export class Missile extends Obstacle {
     playerVelocityX: number
   ) {
     super(scene, x, y);
+    this.init();
     this.body.setVelocityX(playerVelocityX);
     this.warning(x, y, playerVelocityX);
   }
@@ -72,5 +73,15 @@ export class Missile extends Obstacle {
 
       player.setCurrentState(new DieState(player));
     });
+  }
+
+  public init(): void {
+    this.scene.physics.world.enable(this);
+    this.body.allowGravity = false;
+    this.scene.add.existing(this);
+  }
+
+  public update(){
+    
   }
 }

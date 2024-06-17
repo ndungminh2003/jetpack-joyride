@@ -201,6 +201,15 @@
       },
       {
         "type": "spritesheet",
+        "key": "zapperGlowOff",
+        "url": "./assets/Obstacles/Zapper/RegularZappers/glowOff.png",
+        "frameConfig": {
+          "frameWidth": 128,
+          "frameHeight": 128
+        }
+      },
+      {
+        "type": "spritesheet",
         "key": "zapperOrAnim",
         "url": "./assets/Obstacles/Zapper/orbAnim.png",
         "frameConfig": {
@@ -243,6 +252,11 @@
           "frameWidth": 32,
           "frameHeight": 32
         }
+      },
+      {
+        "type": "image",
+        "key": "btn",
+        "url": "./assets/UI/buttonBackingResult.png"
       }
     ]
   }

@@ -1,22 +1,18 @@
 import { BaseWorker } from "./BaseWorker";
 
 export class NormalWorker extends BaseWorker {
-  constructor(scene: Phaser.Scene, action: string) {
-    super(scene, action);
-    this.init();
+  constructor(scene: Phaser.Scene, action: string, x: number, y: number) {
+    super(scene, action, x, y);
   }
 
   override init() {
     super.init();
 
-    this.x = 300;
-    this.y = 400;
-
     this.workerHead = this.scene.add.sprite(16, 8, "worker1Head");
     this.workerBody = this.scene.add.sprite(16, 20, "worker1Body");
 
     this.playAction(this.action); // Initial action
-    this.body.setVelocityX(50);
+
     this.body.setSize(32, 32);
     this.add([this.workerBody, this.workerHead]);
   }

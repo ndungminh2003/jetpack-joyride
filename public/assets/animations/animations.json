@@ -166,6 +166,17 @@
       "frameRate": 30
     },
     {
+      "key": "zapGlowOffEffect",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "zapperGlowOff",
+        "start": 0,
+        "end": 15
+      },
+      "repeat": 0,
+      "frameRate": 30
+    },
+    {
       "key": "zapOrAnimEffect",
       "frames": {
         "typeOfGeneration": "generateFrameNumbers",

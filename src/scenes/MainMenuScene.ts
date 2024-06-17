@@ -1,12 +1,12 @@
 import { Scene, GameObjects } from "phaser";
 
-export class MainMenu extends Scene {
+export class MainMenuScene extends Scene {
   background: GameObjects.Image;
   logo: GameObjects.Image;
   title: GameObjects.Text;
 
   constructor() {
-    super("MainMenu");
+    super("MainMenuScene");
   }
 
   create() {
@@ -30,7 +30,9 @@ export class MainMenu extends Scene {
     //   .setOrigin(0.5);
 
     this.input.once("pointerdown", () => {
-      this.scene.start("Game");
+      this.scene.start("GameScene");
+      this.scene.start("HUDScene")
+      this.scene.bringToTop('HUDScene');
     });
 
     
