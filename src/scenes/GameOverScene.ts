@@ -1,29 +1,34 @@
 import { Scene } from "phaser";
+import { Button } from "../UI/Button";
 
 export class GameOverScene extends Scene {
-  camera: Phaser.Cameras.Scene2D.Camera;
-  background: Phaser.GameObjects.Image;
-  gameover_text: Phaser.GameObjects.Text;
+  private nextBtn: Button;
 
   constructor() {
     super("GameOverScene");
   }
 
   create() {
-    this.camera = this.cameras.main;
+    const { width, height } = this.cameras.main;
+    const graphics = this.add.graphics();
 
-    this.gameover_text = this.add.text(512, 384, "Game Over", {
-      fontFamily: "Arial Black",
-      fontSize: 64,
-      color: "#ffffff",
-      stroke: "#000000",
-      strokeThickness: 8,
-      align: "center",
-    });
-    this.gameover_text.setOrigin(0.5);
+    graphics.fillStyle(0x000000, 0.7);
+    graphics.fillRect(0, 0, width, height);
 
-    this.input.once("pointerdown", () => {
-      this.scene.start("MainMenuScene");
-    });
+    this.nextBtn = new Button(
+      this,
+      this.cameras.main.width / 2,
+      this.cameras.main.height / 2 + 150,
+      "btn",
+      "RESTART",
+      () => {
+        this.scene.stop("GameScene");
+        this.scene.stop("HUDScene");
+        this.scene.start("MainMenuScene");
+        
+      }
+    );
+
+    console.log(this.nextBtn);
   }
 }

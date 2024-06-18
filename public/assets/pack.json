@@ -262,7 +262,49 @@
         "type": "image",
         "key": "btnPause",
         "url": "./assets/UI/buttonPause.png"
+      },
+      {
+        "type": "image",
+        "key": "itemsBtn",
+        "url": "./assets/UI/itemsButtonBlankDark.png"
+      },
+      {
+        "type": "image",
+        "key": "btnCross",
+        "url": "./assets/UI/icon/btnCross.png"
+      },
+      {
+        "type": "image",
+        "key": "btnMusic",
+        "url": "./assets/UI/btnMusic.png"
+      },
+      {
+        "type": "image",
+        "key": "btnSfx",
+        "url": "./assets/UI/btnSfx.png"
+      },
+      {
+        "type": "image",
+        "key": "title_small",
+        "url": "./assets/Levels/Title/Objects/title_small.png"
+      },
+      {
+        "type": "image",
+        "key": "titleGlow_small",
+        "url": "./assets/Levels/Title/Objects/titleGlow_small.png"
+      },
+      {
+        "type": "image",
+        "key": "titleGlow_small",
+        "url": "./assets/Levels/Title/Objects/titleGlow_small.png"
+      },
+      {
+        "type": "image",
+        "key": "btnSettings",
+        "url": "./assets/UI/icon/buttonSettings.png"
       }
+
+
     ]
   }
 }

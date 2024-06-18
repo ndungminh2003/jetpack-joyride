@@ -25,6 +25,9 @@ export class GameManager {
 
   private init() {
     // Create map and set up world bounds
+
+  
+
     this.mapGenerator.generateMap(
       this.mapGenerator.getMapName(0),
       this.scene,
@@ -177,19 +180,11 @@ export class GameManager {
 
       // Set up collisions
       this.scene.physics.add.collider(worker, this.mapGenerator.getGround());
-      this.scene.physics.add.collider(this.player.getBullets(), worker, () => {
-        worker.handleCollide();
-      });
-
       this.scene.physics.add.collider(
-        worker,
         this.player.getBullets(),
-        (bullet, _) => {
-          this.player
-            .getBullets()
-            .handleBulletCollideWithGround(
-              bullet as Phaser.Physics.Arcade.Image
-            );
+        worker,
+        () => {
+          worker.handleCollide();
         }
       );
 
@@ -217,21 +212,14 @@ export class GameManager {
 
       // Set up collisions
       this.scene.physics.add.collider(worker, this.mapGenerator.getGround());
-      this.scene.physics.add.collider(this.player.getBullets(), worker, () => {
-        worker.handleCollide();
-      });
-
       this.scene.physics.add.collider(
-        worker,
         this.player.getBullets(),
-        (bullet, _) => {
-          this.player
-            .getBullets()
-            .handleBulletCollideWithGround(
-              bullet as Phaser.Physics.Arcade.Image
-            );
+        worker,
+        () => {
+          worker.handleCollide();
         }
       );
+
       // Add worker to group and scene
       this.workerGroup.add(worker);
       this.scene.add.existing(worker);

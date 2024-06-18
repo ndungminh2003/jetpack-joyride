@@ -4,6 +4,7 @@ class Bullet extends Phaser.Physics.Arcade.Image {
   public fire(x: number, y: number, vx: number, vy: number, angle: number) {
     this.enableBody(true, x, y, true, true);
     this.setVelocity(vx, vy);
+    this.setImmovable(true);
 
     this.rotation = Math.PI / 2 - angle;
   }

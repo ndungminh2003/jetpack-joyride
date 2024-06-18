@@ -1,4 +1,3 @@
-
 export abstract class BaseWorker extends Phaser.GameObjects.Container {
   declare body: Phaser.Physics.Arcade.Body;
   protected workerHead: Phaser.GameObjects.Sprite;
@@ -32,10 +31,11 @@ export abstract class BaseWorker extends Phaser.GameObjects.Container {
   }
 
   public handleCollide(): void {
-    this.rotation = Math.PI / 2;
-    this.setActive(false);
-    this.body.enable = false;
 
+    this.rotation = Math.PI / 2;
+    this.body.enable = false;
+    this.setActive(false);
+    
     this.body.setVelocityX(0);
 
     this.scene.tweens.add({

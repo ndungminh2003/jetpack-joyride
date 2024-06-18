@@ -22,7 +22,10 @@ export class GameScene extends Scene {
       y: 550,
     });
 
+    //create map generator
     this.mapGenerator = new MapGenerator();
+
+    // Create groups
     this.obstacleGroup = this.add.group();
     this.workerGroup = this.add.group();
 

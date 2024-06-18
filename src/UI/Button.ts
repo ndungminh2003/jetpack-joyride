@@ -18,6 +18,7 @@ export class Button extends Phaser.GameObjects.Container {
 
     // Create the button image
     this.button = this.scene.add.image(0, 0, key);
+  
     this.add(this.button);
 
     // Create the text
@@ -31,7 +32,7 @@ export class Button extends Phaser.GameObjects.Container {
     });
     Phaser.Display.Align.In.Center(this.text, this.button);
     this.add(this.text);
-
+    this.setSize(this.button.width, this.button.height);
     // Add this container to the scene
     this.scene.add.existing(this);
 

@@ -33,6 +33,9 @@ export class DieState extends BaseState {
 
       this.player.getCurrentScene().scene.pause();
 
+      this.player.getCurrentScene().scene.stop("HUDScene");
+      this.player.getCurrentScene().scene.launch("GameOverScene");
+
     }
   }
 }
