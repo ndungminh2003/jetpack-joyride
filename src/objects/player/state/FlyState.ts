@@ -9,17 +9,15 @@ export class FlyState extends BaseState {
 
   public update(time: number, delta: number): void {
     console.log(time, delta);
-    
+
     this.player.getBulletFlash().setVisible(true);
     this.player.getPlayerBody().play("body-fly", true);
     this.player.getPlayerHead().play("head-fly", true);
     this.player.getJetpack().play("jetpack-fly", true);
 
     if (this.player.getKeys().get("FLY")?.isDown) {
+      this.player.body.velocity.y = -300;
 
-
-      this.player.body.velocity.y = -300
-      
       this.player.getBulletFlash().play("bulletFlash", true);
 
       if (this.player.getBullets()) {

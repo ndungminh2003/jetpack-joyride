@@ -16,7 +16,7 @@ export class YellowWorker extends BaseWorker {
     this.add([this.workerBody, this.workerHead]);
   }
 
-  playAction(action: string): void {
+  override playAction(action: string): void {
     if (this.active) {
       this.workerBody.play("worker-body-" + action + "-1", true);
       this.workerHead.play("worker-head-" + action + "-1", true);

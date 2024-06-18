@@ -25,7 +25,7 @@ export class Player extends Phaser.GameObjects.Container {
   }
 
   private init() {
-    //init sprite to add in container
+    // Initialize sprites to add in container
     this.playerHead = this.currentScene.add.sprite(13, 8, "player-head");
     this.playerBody = this.currentScene.add.sprite(13, 20, "player-body");
     this.jetpack = this.currentScene.add.sprite(0, 17, "jetpack");
@@ -38,14 +38,14 @@ export class Player extends Phaser.GameObjects.Container {
       this.bulletFlash,
     ]);
 
-    //set initial state and enable physics
+    // Set initial state and enable physics
     this.currentState = new RunState(this);
     this.currentScene.physics.world.enable(this);
     this.currentScene.add.existing(this);
     this.body.setImmovable(true);
     // this.body.collideWorldBounds = true
 
-    //set properties
+    // Set properties
     this.bulletFlash.setVisible(false);
     this.body.setSize(15, 30);
     this.setScale(2);
@@ -53,11 +53,9 @@ export class Player extends Phaser.GameObjects.Container {
 
     this.body.velocity.x = 250;
     this.body.maxVelocity.x = 550;
-
     this.body.velocity.y = 0;
 
-
-    //create bullet
+    // Create bullets
     this.bullets = this.currentScene.add.existing(
       new Bullets(this.currentScene.physics.world, this.currentScene, {
         name: "bullets",
@@ -69,28 +67,32 @@ export class Player extends Phaser.GameObjects.Container {
       quantity: 5,
     });
 
-    //input
+    // Input
     this.keys = new Map([["FLY", this.addKey("SPACE")]]);
+
+    
   }
 
   private addKey(key: string): Phaser.Input.Keyboard.Key {
     return this.currentScene.input.keyboard!.addKey(key);
   }
 
-  public update(time : number , delta : number): void {
-    //if player is not dead update velocity
 
+  public update(time: number, delta: number): void {
     if (!(this.currentState instanceof DieState)) {
       this.body.velocity.x += 1;
       this.currentState.update(time, delta);
-    } 
-    else {
+    } else {
       this.currentState.update(time, delta);
     }
   }
 
   public setCurrentState(state: BaseState): void {
     this.currentState = state;
+  }
+
+  public getCurrentState(): BaseState {
+    return this.currentState;
   }
 
   public getKeys(): Map<string, Phaser.Input.Keyboard.Key> {

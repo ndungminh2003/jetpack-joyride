@@ -6,7 +6,6 @@ export class BootScene extends Scene {
   }
 
   preload() {
-    
     this.load.setPath("assets");
 
     this.load.image("background", "./Splash/loading_screen.png");

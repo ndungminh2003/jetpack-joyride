@@ -20,7 +20,7 @@ export class DieState extends BaseState {
       this.player.getPlayerHead().x = 35;
 
       this.player.setActive(false);
-      
+
       this.player.getJetpack().destroy();
       this.player.getBulletFlash().destroy();
     }
@@ -30,12 +30,6 @@ export class DieState extends BaseState {
     if (this.player.body.velocity.x <= 0) {
       this.player.body.velocity.x = 0;
       this.player.body.enable = false;
-
-      this.player.getCurrentScene().scene.pause();
-
-      this.player.getCurrentScene().scene.stop("HUDScene");
-      this.player.getCurrentScene().scene.launch("GameOverScene");
-
     }
   }
 }

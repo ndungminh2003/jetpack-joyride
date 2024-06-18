@@ -5,14 +5,16 @@ import { Zapper } from "../objects/obstacle/zapper/Zapper";
 import { Missile } from "../objects/obstacle/missile/Missile";
 import { NormalWorker } from "../objects/worker/NormalWorker";
 import { YellowWorker } from "../objects/worker/YellowWorker";
+import { ScoreManager } from "./ScoreManager";
+import { DieState } from "../objects/player/state/DieState";
 
 export class GameManager {
-  private score: number = 0;
   private scene: Phaser.Scene;
   private player: Player;
   private obstacleGroup: Phaser.GameObjects.Group;
   private workerGroup: Phaser.GameObjects.Group;
   private mapGenerator: MapGenerator;
+  private scoreManager: ScoreManager;
 
   constructor(params: IGameManagerContructor) {
     this.scene = params.scene;
@@ -26,7 +28,7 @@ export class GameManager {
   private init() {
     // Create map and set up world bounds
 
-  
+    this.scoreManager = new ScoreManager(this.scene, 0, this.player);
 
     this.mapGenerator.generateMap(
       this.mapGenerator.getMapName(0),
@@ -87,17 +89,8 @@ export class GameManager {
     });
   }
 
-  public setScore(score: number) {
-    this.score = score;
-  }
-
-  public getScore() {
-    return this.score;
-  }
-
   public update(time: number, delta: number) {
-    console.log(time, delta);
-
+    this.scoreManager.update(time, delta);
     this.mapGenerator.update(this.player, this.scene);
 
     const cameraX = this.scene.cameras.main.scrollX;
@@ -122,6 +115,13 @@ export class GameManager {
         child.destroy();
       }
     });
+
+    if (this.player.getCurrentState() instanceof DieState && this.player.body.velocity.x <= 0) {
+      this.scoreManager.writeScoreToLocalStorage();
+      this.player.getCurrentScene().scene.pause();
+      this.player.getCurrentScene().scene.stop("HUDScene");
+      this.player.getCurrentScene().scene.launch("GameOverScene", { score: this.scoreManager.getScore() });
+    }
   }
 
   private generateObstacle() {
@@ -180,13 +180,9 @@ export class GameManager {
 
       // Set up collisions
       this.scene.physics.add.collider(worker, this.mapGenerator.getGround());
-      this.scene.physics.add.collider(
-        this.player.getBullets(),
-        worker,
-        () => {
-          worker.handleCollide();
-        }
-      );
+      this.scene.physics.add.collider(this.player.getBullets(), worker, () => {
+        worker.handleCollide();
+      });
 
       // Add worker to group and scene
       this.workerGroup.add(worker);
@@ -212,13 +208,9 @@ export class GameManager {
 
       // Set up collisions
       this.scene.physics.add.collider(worker, this.mapGenerator.getGround());
-      this.scene.physics.add.collider(
-        this.player.getBullets(),
-        worker,
-        () => {
-          worker.handleCollide();
-        }
-      );
+      this.scene.physics.add.collider(this.player.getBullets(), worker, () => {
+        worker.handleCollide();
+      });
 
       // Add worker to group and scene
       this.workerGroup.add(worker);

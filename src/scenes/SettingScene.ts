@@ -16,6 +16,24 @@ export class SettingScene extends Scene {
 
     const { width, height } = this.cameras.main;
 
+    const graphics = this.add.graphics();
+
+    graphics.fillStyle(0x000000, 0.7);
+    graphics.fillRect(0, 0, width, height);
+
+
+    this.add
+    .rectangle(
+      this.cameras.main.width / 2,
+      this.cameras.main.height / 2,
+      this.cameras.main.width,
+      this.cameras.main.height,
+      0x000000,
+      0
+    )
+    .setInteractive()
+
+
     this.add.image(width / 2, height / 2, "itemsBtn").setOrigin(0.5).setScale(3);
     this.add.text(width / 2, height / 3, "SETTINGS", {
       fontSize: "24px", 
@@ -34,7 +52,8 @@ export class SettingScene extends Scene {
       "btnCross",
       "",
       () => {
-        this.scene.start("MainMenuScene");
+        this.scene.stop("SettingScene");
+        this.scene.resume("MainMenuScene");  // Resume the MainMenuScene
       }
     );
 
@@ -96,7 +115,5 @@ export class SettingScene extends Scene {
     console.log(this.btnSfx);
     console.log(this.btnLanguage);
     console.log(this.btnCredits);
-
-
   }
 }
