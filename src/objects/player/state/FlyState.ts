@@ -1,10 +1,14 @@
+import { MusicManager } from "../../../manager/MusicManager";
 import { Player } from "../Player";
 import { BaseState } from "./BaseState";
 import { FallState } from "./FallState";
 
 export class FlyState extends BaseState {
+  private jetpackSoundPlaying: boolean;
+
   constructor(player: Player) {
     super(player);
+    this.jetpackSoundPlaying = false; // Initialize the flag
   }
 
   public update(time: number, delta: number): void {
@@ -18,7 +22,12 @@ export class FlyState extends BaseState {
     if (this.player.getKeys().get("FLY")?.isDown) {
       this.player.body.velocity.y = -300;
 
-      this.player.getBulletFlash().play("bulletFlash", true);
+      if (!this.jetpackSoundPlaying) {
+        MusicManager.getInstance(
+          this.player.getCurrentScene()
+        ).playJetpackFire();
+        this.jetpackSoundPlaying = true;
+      }
 
       if (this.player.getBullets()) {
         const foreBullet = 600;
@@ -31,8 +40,8 @@ export class FlyState extends BaseState {
             this.player.x + 8,
             this.player.y +
               this.player.getJetpack().height +
-              +this.player.getBulletFlash().height +
-              +20,
+              this.player.getBulletFlash().height +
+              20,
             this.player.body.velocity.x +
               Math.tan(randomAngle) *
                 this.player.getCurrentScene().physics.world.gravity.y,
@@ -47,6 +56,8 @@ export class FlyState extends BaseState {
       this.changeState(new FallState(this.player));
       this.player.getBulletFlash().anims.stop();
       this.player.getBulletFlash().setVisible(false);
+      this.jetpackSoundPlaying = false;
+      MusicManager.getInstance(this.player.getCurrentScene()).stopJetpackFire();
     }
   }
 }

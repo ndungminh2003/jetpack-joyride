@@ -30,11 +30,7 @@ export class GameManager {
 
     this.scoreManager = new ScoreManager(this.scene, 0, this.player);
 
-    this.mapGenerator.generateMap(
-      this.mapGenerator.getMapName(0),
-      this.scene,
-      this.player
-    );
+    this.mapGenerator.generateMap("Tilte", this.scene, this.player, 1);
     this.mapGenerator.parallex(this.scene);
     this.scene.physics.world.setBounds(
       0,
@@ -45,7 +41,8 @@ export class GameManager {
 
     // Set up player collisions with ground
     this.scene.physics.add.collider(this.player, this.mapGenerator.getGround());
-    this.scene.physics.add.collider(
+    
+    this.scene.physics.add.overlap(
       this.player.getBullets(),
       this.mapGenerator.getGround(),
       (bullet, _) => {
@@ -116,14 +113,19 @@ export class GameManager {
       }
     });
 
-    if (this.player.getCurrentState() instanceof DieState && this.player.body.velocity.x <= 0) {
+    if (
+      this.player.getCurrentState() instanceof DieState &&
+      this.player.body.velocity.x <= 0
+    ) {
       this.scoreManager.writeScoreToLocalStorage();
       this.player.getCurrentScene().scene.pause();
       this.player.getCurrentScene().scene.stop("HUDScene");
-      this.player.getCurrentScene().scene.launch("GameOverScene", { score: this.scoreManager.getScore() });
+      this.player
+        .getCurrentScene()
+        .scene.launch("GameOverScene", { score: this.scoreManager.getScore() });
     }
   }
-
+  //0 0.4 0.5 1 1.01 15
   private generateObstacle() {
     const obstacleTypes = ["Zapper", "Missile"];
     const type = Phaser.Math.RND.pick(obstacleTypes);
@@ -172,7 +174,7 @@ export class GameManager {
         this.scene.cameras.main.scrollX +
         this.scene.cameras.main.width +
         Phaser.Math.Between(0, 800);
-      const yWorker = 600;
+      const yWorker = 550;
       const action = Phaser.Math.RND.pick(["walk", "run"]); // Random action
       const flipX = Phaser.Math.RND.between(0, 1) === 1; // Random flipX for this worker
       const worker = new NormalWorker(this.scene, action, xWorker, yWorker);

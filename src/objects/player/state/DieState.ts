@@ -1,3 +1,4 @@
+import { MusicManager } from "../../../manager/MusicManager";
 import { Player } from "../Player";
 import { BaseState } from "./BaseState";
 
@@ -8,6 +9,10 @@ export class DieState extends BaseState {
 
   public update(time: number, delta: number): void {
     console.log(time, delta);
+
+    MusicManager.getInstance(this.player.getCurrentScene()).stopRunSound();
+    MusicManager.getInstance(this.player.getCurrentScene()).stopJetpackFire();
+
     if (this.player.active) {
       this.player.rotation = Math.PI / 2;
 

@@ -3,6 +3,16 @@
     "files": [
       {
         "type": "tilemapTiledJSON",
+        "key": "Tilte",
+        "url": "assets/atlas/Tilte_Map.json"
+      },
+      {
+        "type": "image",
+        "key": "Tilte_tileset",
+        "url": "assets/atlas/Tilte_Map_assets.png"
+      },
+      {
+        "type": "tilemapTiledJSON",
         "key": "Hallway",
         "url": "assets/atlas/Hallway_Map.json"
       },
@@ -302,9 +312,212 @@
         "type": "image",
         "key": "btnSettings",
         "url": "./assets/UI/icon/buttonSettings.png"
+      },
+      {
+        "type": "audio",
+        "key": "musicMenu",
+        "url": "./assets/BGM/Music_Menu.mp3"
+      },
+      {
+        "type": "audio",
+        "key": "musicLevel",
+        "url": "./assets/BGM/Music_Level.mp3"
+      },
+      {
+        "type": "audio",
+        "key": "jetpackFire",
+        "url": "./assets/SFX/Jetpack/jetpack_fireLP.mp3"
+      },
+      {
+        "type": "audio",
+        "key": "run1",
+        "url": "./assets/SFX/Barry/run_metal_left_1.mp3"
+      },
+      {
+        "type": "audio",
+        "key": "run2",
+        "url": "./assets/SFX/Barry/run_metal_left_2.mp3"
+      },
+      {
+        "type": "audio",
+        "key": "run3",
+        "url": "./assets/SFX/Barry/run_metal_left_3.mp3"
+      },
+      {
+        "type": "audio",
+        "key": "run4",
+        "url": "./assets/SFX/Barry/run_metal_left_4.mp3"
+      },
+      {
+        "type": "audio",
+        "key": "dieBones",
+        "url": "./assets/SFX/Barry/Player_bones.mp3"
+      },
+      {
+        "type": "audio",
+        "key": "missileLaunch",
+        "url": "./assets/SFX/Obstacle/Missile/missile_launch.mp3"
+      },
+      {
+        "type": "audio",
+        "key": "missileWarning",
+        "url": "./assets/SFX/Obstacle/Missile/missile_warning.mp3"
+      },
+      {
+        "type": "audio",
+        "key": "rocketExplosion",
+        "url": "./assets/SFX/Obstacle/Missile/rocket_explode_1.mp3"
+      },
+      {
+        "type": "text",
+        "key": "coin1",
+        "url": "./assets/patterns/coinPattern1.txt"
+      },
+      {
+        "type": "text",
+        "key": "coin2",
+        "url": "./assets/patterns/coinPattern2.txt"
+      },
+      {
+        "type": "text",
+        "key": "coin3",
+        "url": "./assets/patterns/coinPattern3.txt"
+      },
+      {
+        "type": "text",
+        "key": "coin4",
+        "url": "./assets/patterns/coinPattern4.txt"
+      },
+      {
+        "type": "text",
+        "key": "coin5",
+        "url": "./assets/patterns/coinPattern5.txt"
+      },
+      {
+        "type": "text",
+        "key": "coin6",
+        "url": "./assets/patterns/coinPattern6.txt"
+      },
+      {
+        "type": "text",
+        "key": "coin7",
+        "url": "./assets/patterns/coinPattern7.txt"
+      },
+      {
+        "type": "text",
+        "key": "coin8",
+        "url": "./assets/patterns/coinPattern8.txt"
+      },
+      {
+        "type": "text",
+        "key": "coin9",
+        "url": "./assets/patterns/coinPattern9.txt"
+      },
+      {
+        "type": "text",
+        "key": "coin10",
+        "url": "./assets/patterns/coinPattern10.txt"
+      },
+      {
+        "type": "text",
+        "key": "coin11",
+        "url": "./assets/patterns/coinPattern11.txt"
+      },
+      {
+        "type": "text",
+        "key": "coin12",
+        "url": "./assets/patterns/coinPattern12.txt"
+      },
+      {
+        "type": "text",
+        "key": "coin13",
+        "url": "./assets/patterns/coinPattern13.txt"
+      },
+      {
+        "type": "text",
+        "key": "coin14",
+        "url": "./assets/patterns/coinPattern14.txt"
+      },
+      {
+        "type": "text",
+        "key": "coin15",
+        "url": "./assets/patterns/coinPattern15.txt"
+      },
+      {
+        "type": "text",
+        "key": "coin16",
+        "url": "./assets/patterns/coinPattern16.txt"
+      },
+      {
+        "type": "text",
+        "key": "coin17",
+        "url": "./assets/patterns/coinPattern17.txt"
+      },
+      {
+        "type": "text",
+        "key": "coin18",
+        "url": "./assets/patterns/coinPattern18.txt"
+      },
+      {
+        "type": "text",
+        "key": "coin19",
+        "url": "./assets/patterns/coinPattern19.txt"
+      },
+      {
+        "type": "text",
+        "key": "coin20",
+        "url": "./assets/patterns/coinPattern20.txt"
+      },
+      {
+        "type": "text",
+        "key": "coin21",
+        "url": "./assets/patterns/coinPattern21.txt"
+      },
+      {
+        "type": "text",
+        "key": "coin22",
+        "url": "./assets/patterns/coinPattern22.txt"
+      },
+      {
+        "type": "text",
+        "key": "coin23",
+        "url": "./assets/patterns/coinPattern23.txt"
+      },
+      {
+        "type": "text",
+        "key": "coin24",
+        "url": "./assets/patterns/coinPattern24.txt"
+      },
+      {
+        "type": "text",
+        "key": "coin25",
+        "url": "./assets/patterns/coinPattern25.txt"
+      },
+      {
+        "type": "text",
+        "key": "coin26",
+        "url": "./assets/patterns/coinPattern26.txt"
+      },
+      {
+        "type": "text",
+        "key": "coin27",
+        "url": "./assets/patterns/coinPattern27.txt"
+      },
+      {
+        "type": "image",
+        "key": "coin",
+        "url": "./assets/Entities/coin_64.png"
+      },
+      {
+        "type": "spritesheet",
+        "key": "coinCollect",
+        "url": "./assets/Entities/coinCollect1_TVOS.png",
+        "frameConfig": {
+          "frameWidth": 64,
+          "frameHeight": 64
+        }
       }
-
-
+      
     ]
   }
 }

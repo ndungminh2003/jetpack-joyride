@@ -14,6 +14,8 @@ export class SettingScene extends Scene {
 
   create() {
 
+    // Create music manager
+
     const { width, height } = this.cameras.main;
 
     const graphics = this.add.graphics();
@@ -73,7 +75,7 @@ export class SettingScene extends Scene {
       "btnMusic",
       "",
       () => {
-        console.log("Music");
+        
       }
     );
 

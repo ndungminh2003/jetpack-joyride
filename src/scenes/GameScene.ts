@@ -2,6 +2,7 @@ import { Scene } from "phaser";
 import { Player } from "../objects/player/Player";
 import { MapGenerator } from "../manager/MapGenerator";
 import { GameManager } from "../manager/GameManager";
+import { MusicManager } from "../manager/MusicManager";
 
 export class GameScene extends Scene {
   private player: Player;
@@ -15,6 +16,10 @@ export class GameScene extends Scene {
   }
 
   create() {
+
+    // Create music manager
+    MusicManager.getInstance(this).playBGM();
+    
     // Create player
     this.player = new Player({
       scene: this,
@@ -38,6 +43,7 @@ export class GameScene extends Scene {
       mapGenerator: this.mapGenerator,
     });
   }
+
 
   update(time: number, delta: number) {
     this.player.update(time, delta);

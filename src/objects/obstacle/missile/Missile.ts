@@ -1,3 +1,4 @@
+import { MusicManager } from "../../../manager/MusicManager";
 import { Player } from "../../player/Player";
 import { DieState } from "../../player/state/DieState";
 import { Obstacle } from "../Obstacle";
@@ -22,7 +23,7 @@ export class Missile extends Obstacle {
 
   private warning(x: number, y: number, playerVelocityX: number): void {
     this.missileAlert = this.scene.physics.add.sprite(x, y, "missileAlert");
-
+    MusicManager.getInstance(this.scene).playMissileWarning();
     (this.missileAlert.body as Phaser.Physics.Arcade.Body)
       .setVelocityX(playerVelocityX)
       .setAllowGravity(false);
@@ -45,6 +46,8 @@ export class Missile extends Obstacle {
     this.missileSmog = this.scene.add.sprite(12, 16, "missileEffect");
     this.missileHead = this.scene.add.sprite(16, 16, "missile");
     this.missileTall = this.scene.add.sprite(48, 16, "missileEffect");
+  
+    MusicManager.getInstance(this.scene).playMissileLaunch();
 
     this.missileSmog.play("missile-smog-Effect", true);
     this.missileHead.play("missile-head-Effect", true);
@@ -72,6 +75,8 @@ export class Missile extends Obstacle {
       this.destroy();
 
       player.setCurrentState(new DieState(player));
+
+      MusicManager.getInstance(this.scene).playExplosion();
     });
   }
 

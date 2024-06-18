@@ -1,3 +1,4 @@
+import { MusicManager } from "../../../manager/MusicManager";
 import { Player } from "../../player/Player";
 import { DieState } from "../../player/state/DieState";
 import { Obstacle } from "../Obstacle";
@@ -97,8 +98,8 @@ export class Zapper extends Obstacle {
         glowOff.play("zapGlowOffEffect", true);
         glowOff.setScale(0.5);
         this.scene.add.existing(glowOff);
+        MusicManager.getInstance(this.scene).playDieBones();
         player.setCurrentState(new DieState(player));
-        
       });
     });
   }

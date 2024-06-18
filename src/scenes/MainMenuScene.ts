@@ -10,6 +10,7 @@ export class MainMenuScene extends Scene {
   }
 
   create() {
+
     this.add
       .image(
         this.cameras.main.width / 2,

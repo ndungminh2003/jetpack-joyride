@@ -9,12 +9,11 @@ export class GameOverScene extends Scene {
     super("GameOverScene");
   }
 
-  init(data: any){
+  init(data: any) {
     this.score = data.score;
   }
 
   create() {
-  
     const { width, height } = this.cameras.main;
     const graphics = this.add.graphics();
 
@@ -38,13 +37,13 @@ export class GameOverScene extends Scene {
       .setOrigin(0.5);
 
     this.add
-      .text(width / 2, height / 2, `${this.score}M`, {
-        fontSize: "24px",
-        color: "#FFFFFF",
+      .text(width / 2, height / 2 - 50, `${this.score}M`, {
+        fontSize: "48px",
         fontStyle: "bold",
         stroke: "#000000",
         strokeThickness: 3,
         align: "center",
+        color: "#FFFF00", // Add this line to set the text color to yellow
       })
       .setOrigin(0.5);
 

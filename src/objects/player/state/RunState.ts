@@ -1,3 +1,4 @@
+import { MusicManager } from "../../../manager/MusicManager";
 import { Player } from "../Player";
 import { BaseState } from "./BaseState";
 import { FlyState } from "./FlyState";
@@ -13,7 +14,11 @@ export class RunState extends BaseState {
     this.player.getPlayerHead().play("head-run", true);
     this.player.getJetpack().play("jetpack-run", true);
 
+    MusicManager.getInstance(this.player.getCurrentScene()).playRunSound();
+
     if (this.player.getKeys().get("FLY")?.isDown) {
+
+      MusicManager.getInstance(this.player.getCurrentScene()).stopRunSound();
       this.changeState(new FlyState(this.player));
     }
   }
