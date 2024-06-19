@@ -12,6 +12,34 @@ export class MainMenuScene extends Scene {
   create() {
 
     this.add
+    .image(
+      this.cameras.main.width + 10,
+      this.cameras.main.height / 7.5,
+      "btnBackingResult"
+    )
+    .setOrigin(1).setScale(1.2);
+
+    this.add.image(
+      this.cameras.main.width - 230,
+      this.cameras.main.height / 12,
+      "totalCoins"
+    )
+
+    // get total coins from local storage
+    let totalCoins = localStorage.getItem("TOTALCOINS");
+
+    this.add.text(
+      this.cameras.main.width - 200,
+      this.cameras.main.height / 12 - 15,
+      `${totalCoins}`,
+      {
+        fontSize: "38px",
+        color: "#fff",
+        fontStyle: "bold",
+      }
+    );
+    
+    this.add
       .image(
         this.cameras.main.width / 2,
         this.cameras.main.height / 2 - 100,

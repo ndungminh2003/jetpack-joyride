@@ -18,6 +18,7 @@ export class FlyState extends BaseState {
     this.player.getPlayerBody().play("body-fly", true);
     this.player.getPlayerHead().play("head-fly", true);
     this.player.getJetpack().play("jetpack-fly", true);
+    this.player.getBulletFlash().play("bulletFlash", true);
 
     if (this.player.getKeys().get("FLY")?.isDown) {
       this.player.body.velocity.y = -300;
@@ -34,20 +35,36 @@ export class FlyState extends BaseState {
         const randomAngle =
           Math.random() * (Math.PI / 4 - -Math.PI / 4) + -Math.PI / 4;
 
-        this.player
-          .getBullets()
-          .fire(
-            this.player.x + 8,
-            this.player.y +
-              this.player.getJetpack().height +
-              this.player.getBulletFlash().height +
-              20,
-            this.player.body.velocity.x +
-              Math.tan(randomAngle) *
-                this.player.getCurrentScene().physics.world.gravity.y,
-            this.player.getCurrentScene().physics.world.gravity.y + foreBullet,
-            randomAngle / 3
-          );
+        if (this.player.y >= 500) {
+          this.player
+            .getBullets()
+            .fire(
+              this.player.x + 8,
+              this.player.y + this.player.getJetpack().height,
+              this.player.body.velocity.x +
+                Math.tan(randomAngle) *
+                  this.player.getCurrentScene().physics.world.gravity.y,
+              this.player.getCurrentScene().physics.world.gravity.y +
+                foreBullet,
+              randomAngle / 3
+            );
+        } else {
+          this.player
+            .getBullets()
+            .fire(
+              this.player.x + 8,
+              this.player.y +
+                this.player.getJetpack().height +
+                this.player.getBulletFlash().height +
+                20,
+              this.player.body.velocity.x +
+                Math.tan(randomAngle) *
+                  this.player.getCurrentScene().physics.world.gravity.y,
+              this.player.getCurrentScene().physics.world.gravity.y +
+                foreBullet,
+              randomAngle / 3
+            );
+        }
       }
     }
 

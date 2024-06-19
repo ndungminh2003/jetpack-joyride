@@ -1,19 +1,26 @@
+import { CoinManager } from './CoinManager';
 import { Scene } from "phaser";
 import { Player } from "../objects/player/Player";
 import { Coins } from "../objects/coin/Coin";
 
 export class MapGenerator {
-
   private lv: number = 0;
   private map: Phaser.Tilemaps.Tilemap;
   private tileset: Phaser.Tilemaps.Tileset;
   private ground: Phaser.Tilemaps.TilemapLayer;
   private mapName: string[] = ["Hallway", "Forest", "Aqua", "Cave"];
-  private layers: { rationX: number; sprite: Phaser.GameObjects.TileSprite }[] = [];
+  private layers: { rationX: number; sprite: Phaser.GameObjects.TileSprite }[] =
+    [];
   private coins: Coins;
-  constructor() { }
+  constructor() {}
 
-  public generateMap(maptype: string, scene: Scene, player: Player, tilte: number): void {
+  public generateMap(
+    maptype: string,
+    scene: Scene,
+    player: Player,
+    tilte: number, 
+    coinManager : CoinManager
+  ): void {
     this.map = scene.make.tilemap({
       key: maptype,
       tileWidth: 32,
@@ -48,7 +55,7 @@ export class MapGenerator {
         (this.map.widthInPixels - 32 * 4) * this.lv - 1,
         this.map.heightInPixels - 32 * 4
       )!;
-      this.ground.setCollisionByExclusion([-1])
+      this.ground.setCollisionByExclusion([-1]);
 
       scene.physics.add.overlap(
         player.getBullets(),
@@ -62,15 +69,17 @@ export class MapGenerator {
         }
       );
     }
-    
-    if (tilte != 1 && this.lv % 2 == 1) {
-      let height = this.map.heightInPixels / 3
-      let width = (this.map.widthInPixels - 32 * 4.6) * this.lv + this.map.widthInPixels / 3
-      let patternNum = Math.floor(Math.random() * 27) + 1;
-      this.coins = new Coins(scene, width, height, patternNum)
-      this.coins.spawnCoins()
-      //scene.physics.add.collider(Player, this.coins)
 
+    if (tilte != 1 && this.lv % 2 == 1) {
+      let height = this.map.heightInPixels / 6;
+      let width =
+        (this.map.widthInPixels - 32 * 4.6) * this.lv +
+        this.map.widthInPixels / 3;
+      let patternNum = Math.floor(Math.random() * 27) + 1;
+      this.coins = new Coins(scene, width, height, patternNum);
+      this.coins.spawnCoins();
+
+      this.coins.addCollide(player, coinManager);
     }
   }
   public parallex(scene: Scene): void {
@@ -158,8 +167,8 @@ export class MapGenerator {
   }
   //      lv1c    lv2     lv3c
   // lv0  0.5  1  1.5  2  2.5  3
-  public update(player: Player, scene: Scene): void {
-    // console.log(this.coins)
+  public update(player: Player, scene: Scene, coinManager : CoinManager): void {
+   
     if (
       this.map &&
       player.x >= (this.map.widthInPixels * (2 * this.lv + 1)) / 2
@@ -167,10 +176,10 @@ export class MapGenerator {
       this.lv++;
       let ran = Math.floor(Math.random() * 3); //0-2
       if (this.lv % 2 === 0) {
-        this.generateMap(this.mapName[0], scene, player, 0);
+        this.generateMap(this.mapName[0], scene, player, 0, coinManager);
       } else {
         this.setLayer(ran);
-        this.generateMap(this.mapName[ran + 1], scene, player, 0);
+        this.generateMap(this.mapName[ran + 1], scene, player, 0, coinManager);
       }
       if (this.ground) {
         scene.physics.add.collider(player, this.ground);
@@ -179,4 +188,3 @@ export class MapGenerator {
     this.updateLayer(player);
   }
 }
-

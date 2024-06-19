@@ -22,8 +22,9 @@ export class Missile extends Obstacle {
   }
 
   private warning(x: number, y: number, playerVelocityX: number): void {
-    this.missileAlert = this.scene.physics.add.sprite(x, y, "missileAlert");
     MusicManager.getInstance(this.scene).playMissileWarning();
+    
+    this.missileAlert = this.scene.physics.add.sprite(x, y, "missileAlert");
     (this.missileAlert.body as Phaser.Physics.Arcade.Body)
       .setVelocityX(playerVelocityX)
       .setAllowGravity(false);

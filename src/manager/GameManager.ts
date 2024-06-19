@@ -7,6 +7,7 @@ import { NormalWorker } from "../objects/worker/NormalWorker";
 import { YellowWorker } from "../objects/worker/YellowWorker";
 import { ScoreManager } from "./ScoreManager";
 import { DieState } from "../objects/player/state/DieState";
+import { CoinManager } from "./CoinManager";
 
 export class GameManager {
   private scene: Phaser.Scene;
@@ -15,6 +16,7 @@ export class GameManager {
   private workerGroup: Phaser.GameObjects.Group;
   private mapGenerator: MapGenerator;
   private scoreManager: ScoreManager;
+  private coinManager: CoinManager;
 
   constructor(params: IGameManagerContructor) {
     this.scene = params.scene;
@@ -29,19 +31,26 @@ export class GameManager {
     // Create map and set up world bounds
 
     this.scoreManager = new ScoreManager(this.scene, 0, this.player);
+    this.coinManager = new CoinManager(this.scene, 0);
 
-    this.mapGenerator.generateMap("Tilte", this.scene, this.player, 1);
+    this.mapGenerator.generateMap(
+      "Tilte",
+      this.scene,
+      this.player,
+      1,
+      this.coinManager
+    );
     this.mapGenerator.parallex(this.scene);
     this.scene.physics.world.setBounds(
       0,
-      0,
+      this.scene.cameras.main.height / 9,
       Infinity,
       this.mapGenerator.getMap().heightInPixels
     );
 
     // Set up player collisions with ground
     this.scene.physics.add.collider(this.player, this.mapGenerator.getGround());
-    
+
     this.scene.physics.add.overlap(
       this.player.getBullets(),
       this.mapGenerator.getGround(),
@@ -88,7 +97,8 @@ export class GameManager {
 
   public update(time: number, delta: number) {
     this.scoreManager.update(time, delta);
-    this.mapGenerator.update(this.player, this.scene);
+    this.mapGenerator.update(this.player, this.scene, this.coinManager);
+    this.coinManager.update(time, delta);
 
     const cameraX = this.scene.cameras.main.scrollX;
 
@@ -98,7 +108,6 @@ export class GameManager {
         child.update();
       }
       if (child.x < cameraX - 400) {
-        // 50 pixels buffer
         child.destroy();
       }
     });
@@ -118,6 +127,7 @@ export class GameManager {
       this.player.body.velocity.x <= 0
     ) {
       this.scoreManager.writeScoreToLocalStorage();
+      this.coinManager.writeCoinToLocalStorage();
       this.player.getCurrentScene().scene.pause();
       this.player.getCurrentScene().scene.stop("HUDScene");
       this.player
@@ -125,7 +135,7 @@ export class GameManager {
         .scene.launch("GameOverScene", { score: this.scoreManager.getScore() });
     }
   }
-  //0 0.4 0.5 1 1.01 15
+
   private generateObstacle() {
     const obstacleTypes = ["Zapper", "Missile"];
     const type = Phaser.Math.RND.pick(obstacleTypes);
@@ -174,7 +184,7 @@ export class GameManager {
         this.scene.cameras.main.scrollX +
         this.scene.cameras.main.width +
         Phaser.Math.Between(0, 800);
-      const yWorker = 550;
+      const yWorker = 600;
       const action = Phaser.Math.RND.pick(["walk", "run"]); // Random action
       const flipX = Phaser.Math.RND.between(0, 1) === 1; // Random flipX for this worker
       const worker = new NormalWorker(this.scene, action, xWorker, yWorker);

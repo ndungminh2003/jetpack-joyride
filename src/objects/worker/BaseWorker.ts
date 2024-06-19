@@ -17,6 +17,8 @@ export abstract class BaseWorker extends Phaser.GameObjects.Container {
     this.body.setImmovable(true);
     this.setDepth(Infinity);
     this.body.setVelocityX(50);
+    this.body.setAllowGravity(false);
+    this.body.setVelocityY(0);
     this.setScale(1.5);
   }
 

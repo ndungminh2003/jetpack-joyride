@@ -1,10 +1,8 @@
 import { Scene } from "phaser";
 import { Button } from "../UI/Button";
 
-
 export class HUDScene extends Scene {
   private button: Button;
-
 
   constructor() {
     super("HUDScene");
@@ -26,5 +24,4 @@ export class HUDScene extends Scene {
     );
     console.log(this.button);
   }
-
 }

@@ -8,7 +8,6 @@ import { PauseScene } from "./scenes/PauseScene";
 import { SettingScene } from "./scenes/SettingScene";
 import { Game, Types } from "phaser";
 
-
 //  Find out more information about the Game Config at:
 //  https://newdocs.phaser.io/docs/3.70.0/Phaser.Types.Core.GameConfig
 const config: Types.Core.GameConfig = {
@@ -26,10 +25,19 @@ const config: Types.Core.GameConfig = {
     default: "arcade",
     arcade: {
       gravity: { x: 0, y: 1000 },
-      debug: true,
+      debug: false,
     },
   },
-  scene: [BootScene, Preloader, MainMenuScene, GameScene, GameOverScene, HUDScene, PauseScene, SettingScene],
+  scene: [
+    BootScene,
+    Preloader,
+    MainMenuScene,
+    GameScene,
+    GameOverScene,
+    HUDScene,
+    PauseScene,
+    SettingScene,
+  ],
 };
 
 export default new Game(config);

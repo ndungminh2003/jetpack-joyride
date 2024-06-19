@@ -506,7 +506,7 @@
       {
         "type": "image",
         "key": "coin",
-        "url": "./assets/Entities/coin_64.png"
+        "url": "./assets/Entities/coinSlow_TVOS.png"
       },
       {
         "type": "spritesheet",
@@ -516,8 +516,17 @@
           "frameWidth": 64,
           "frameHeight": 64
         }
+      },
+      {
+        "type": "image",
+        "key": "btnBackingResult",
+        "url": "./assets/UI/buttonBackingResult.png"
+      },
+      {
+        "type": "image",
+        "key": "totalCoins",
+        "url": "./assets/UI/buttonCoinsSmall.png"
       }
-      
     ]
   }
 }

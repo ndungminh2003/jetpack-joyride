@@ -384,6 +384,18 @@
       },
       "repeat": 0,
       "frameRate": 15
+    },
+    {
+      "key": "coinCollectAnim",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "coinCollect",
+        "start": 0,
+        "end": 3
+      },
+      "repeat": 0,
+      "frameRate": 15
     }
+
   ]
 }
