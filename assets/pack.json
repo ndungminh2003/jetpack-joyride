@@ -526,6 +526,15 @@
         "type": "image",
         "key": "totalCoins",
         "url": "./assets/UI/buttonCoinsSmall.png"
+      },
+      {
+        "type": "spritesheet",
+        "key": "coin1",
+        "url": "./assets/Entities/coin1_TVOS.png",
+        "frameConfig": {
+          "frameWidth": 32,
+          "frameHeight": 32
+        }
       }
     ]
   }
