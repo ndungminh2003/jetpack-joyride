@@ -67,6 +67,7 @@ export class GameManager {
 
     // Set up camera to follow player
     this.scene.cameras.main.startFollow(this.player, true, 0.5, 0.5);
+    this.scene.cameras.main.setFollowOffset(-this.scene.cameras.main.width / 8, 0);
     this.scene.cameras.main.setBounds(
       0,
       0,

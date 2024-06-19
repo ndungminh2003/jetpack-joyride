@@ -32,7 +32,8 @@ export class Coins extends Phaser.GameObjects.Container {
         if (cell === "1") {
           const x = this.x + colIndex * 32;
           const y = this.y + rowIndex * 32;
-          let coin = this.scene.add.sprite(x, y, "coin");
+          let coin = this.scene.add.sprite(x, y, "coin1");
+          coin.play("coinSpin", true);
           this.scene.physics.add.existing(coin);
           coin.setDepth(10000);
           (coin.body as Phaser.Physics.Arcade.Body)
