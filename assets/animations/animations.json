@@ -130,7 +130,7 @@
         "end": 3
       },
       "repeat": -1,
-      "frameRate": 10
+      "frameRate": 40
     },
     {
       "key": "bulletSplash",
@@ -141,7 +141,7 @@
         "end": 3
       },
       "repeat": 0,
-      "frameRate": 10
+      "frameRate": 50
     },
     {
       "key": "zapEffect",

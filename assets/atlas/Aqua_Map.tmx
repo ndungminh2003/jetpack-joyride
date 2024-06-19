@@ -150,7 +150,7 @@
 </data>
  </layer>
  <objectgroup id="15" name="Objects">
-  <object id="1" name="Zapper" x="668" y="328">
+  <object id="1" name="Zapper" x="668" y="343.152">
    <point/>
   </object>
   <object id="4" name="Zapper" x="2886" y="332">
@@ -162,76 +162,76 @@
   <object id="7" name="Coin" x="1792.79" y="394.606">
    <point/>
   </object>
-  <object id="8" name="NormalWorker" x="281.818" y="609.091">
+  <object id="8" name="NormalWorker" x="281.818" y="610">
    <point/>
   </object>
-  <object id="9" name="YellowWorker" x="406.061" y="606.061">
+  <object id="9" name="YellowWorker" x="406.061" y="610">
    <point/>
   </object>
-  <object id="10" name="NormalWorker" x="551.515" y="593.939">
+  <object id="10" name="NormalWorker" x="551.515" y="610">
    <point/>
   </object>
-  <object id="11" name="YellowWorker" x="693.939" y="603.03">
+  <object id="11" name="YellowWorker" x="693.939" y="610">
    <point/>
   </object>
-  <object id="12" name="NormalWorker" x="851.515" y="603.03">
+  <object id="12" name="NormalWorker" x="851.515" y="610">
    <point/>
   </object>
-  <object id="15" name="YellowWorker" x="1018.18" y="609.091">
+  <object id="15" name="YellowWorker" x="1018.18" y="610">
    <point/>
   </object>
-  <object id="16" name="NormalWorker" x="1215.15" y="609.091">
+  <object id="16" name="NormalWorker" x="1215.15" y="610">
    <point/>
   </object>
-  <object id="17" name="YellowWorker" x="1378.79" y="615.152">
+  <object id="17" name="YellowWorker" x="1378.79" y="610">
    <point/>
   </object>
-  <object id="18" name="NormalWorker" x="1536.36" y="612.121">
+  <object id="18" name="NormalWorker" x="1536.36" y="610">
    <point/>
   </object>
-  <object id="19" name="YellowWorker" x="1766.67" y="615.152">
+  <object id="19" name="YellowWorker" x="1766.67" y="610">
    <point/>
   </object>
-  <object id="20" name="NormalWorker" x="1927.27" y="621.212">
+  <object id="20" name="NormalWorker" x="1927.27" y="610">
    <point/>
   </object>
-  <object id="21" name="YellowWorker" x="2106.06" y="606.061">
+  <object id="21" name="YellowWorker" x="2106.06" y="610">
    <point/>
   </object>
-  <object id="22" name="NormalWorker" x="2263.64" y="600">
+  <object id="22" name="NormalWorker" x="2263.64" y="610">
    <point/>
   </object>
-  <object id="23" name="YellowWorker" x="2454.55" y="600">
+  <object id="23" name="YellowWorker" x="2454.55" y="610">
    <point/>
   </object>
-  <object id="24" name="NormalWorker" x="2615.15" y="618.182">
+  <object id="24" name="NormalWorker" x="2615.15" y="610">
    <point/>
   </object>
-  <object id="26" name="YellowWorker" x="2760.61" y="609.091">
+  <object id="26" name="YellowWorker" x="2760.61" y="610">
    <point/>
   </object>
-  <object id="27" name="NormalWorker" x="2930.3" y="615.152">
+  <object id="27" name="NormalWorker" x="2930.3" y="610">
    <point/>
   </object>
-  <object id="28" name="YellowWorker" x="3100" y="621.212">
+  <object id="28" name="YellowWorker" x="3100" y="610">
    <point/>
   </object>
-  <object id="29" name="NormalWorker" x="3327.27" y="618.182">
+  <object id="29" name="NormalWorker" x="3327.27" y="610">
    <point/>
   </object>
-  <object id="30" name="YellowWorker" x="3557.58" y="618.182">
+  <object id="30" name="YellowWorker" x="3557.58" y="610">
    <point/>
   </object>
-  <object id="31" name="NormalWorker" x="3784.85" y="615.152">
+  <object id="31" name="NormalWorker" x="3784.85" y="610">
    <point/>
   </object>
-  <object id="32" name="YellowWorker" x="3975.76" y="615.152">
+  <object id="32" name="YellowWorker" x="3975.76" y="610">
    <point/>
   </object>
-  <object id="35" name="NormalWorker" x="4163.64" y="621.212">
+  <object id="35" name="NormalWorker" x="4163.64" y="610">
    <point/>
   </object>
-  <object id="36" name="YellowWorker" x="4330.3" y="621.212">
+  <object id="36" name="YellowWorker" x="4330.3" y="610">
    <point/>
   </object>
  </objectgroup>
