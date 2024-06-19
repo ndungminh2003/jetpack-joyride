@@ -1,10 +1,9 @@
 import { Player } from "./../objects/player/Player";
 import { IGameManagerContructor } from "../types/IGameManagerContructor";
 import { MapGenerator } from "./MapGenerator";
-import { Zapper } from "../objects/obstacle/zapper/Zapper";
 import { Missile } from "../objects/obstacle/missile/Missile";
-import { NormalWorker } from "../objects/worker/NormalWorker";
-import { YellowWorker } from "../objects/worker/YellowWorker";
+// import { NormalWorker } from "../objects/worker/NormalWorker";
+// import { YellowWorker } from "../objects/worker/YellowWorker";
 import { ScoreManager } from "./ScoreManager";
 import { DieState } from "../objects/player/state/DieState";
 import { CoinManager } from "./CoinManager";
@@ -38,7 +37,9 @@ export class GameManager {
       this.scene,
       this.player,
       1,
-      this.coinManager
+      this.coinManager,
+      this.obstacleGroup,
+      this.workerGroup
     );
     this.mapGenerator.parallex(this.scene);
     this.scene.physics.world.setBounds(
@@ -81,23 +82,29 @@ export class GameManager {
 
     // Timed generation of obstacles and workers
     this.scene.time.addEvent({
-      delay: 2000, // 2 seconds
+      delay: 4000, // 2 seconds
       callback: this.generateObstacle,
       callbackScope: this,
       loop: true,
     });
 
-    this.scene.time.addEvent({
-      delay: 2000, // 2 seconds
-      callback: this.generateWorker,
-      callbackScope: this,
-      loop: true,
-    });
+    // this.scene.time.addEvent({
+    //   delay: 2000, // 2 seconds
+    //   callback: this.generateWorker,
+    //   callbackScope: this,
+    //   loop: true,
+    // });
   }
 
   public update(time: number, delta: number) {
     this.scoreManager.update(time, delta);
-    this.mapGenerator.update(this.player, this.scene, this.coinManager);
+    this.mapGenerator.update(
+      this.player,
+      this.scene,
+      this.coinManager,
+      this.obstacleGroup,
+      this.workerGroup
+    );
     this.coinManager.update(time, delta);
 
     const cameraX = this.scene.cameras.main.scrollX;
@@ -137,96 +144,74 @@ export class GameManager {
   }
 
   private generateObstacle() {
-    const obstacleTypes = ["Zapper", "Missile"];
-    const type = Phaser.Math.RND.pick(obstacleTypes);
+    const missileX =
+      this.scene.cameras.main.scrollX + this.scene.cameras.main.width - 50;
+    const missileY = this.player.y + this.player.body.height / 4;
+    let obstacle = new Missile(
+      this.scene,
+      missileX,
+      missileY,
+      this.player.body.velocity.x
+    );
 
-    let obstacle;
-
-    switch (type) {
-      case "Zapper":
-        const zapperX =
-          this.scene.cameras.main.scrollX + this.scene.cameras.main.width + 50;
-        const zapperY = Phaser.Math.Between(200, this.scene.scale.height - 300);
-
-        obstacle = new Zapper(this.scene, zapperX, zapperY);
-        this.obstacleGroup.add(obstacle);
-        break;
-      case "Missile":
-        const missileX =
-          this.scene.cameras.main.scrollX + this.scene.cameras.main.width - 50;
-        const missileY = this.player.y + this.player.body.height / 4;
-        obstacle = new Missile(
-          this.scene,
-          missileX,
-          missileY,
-          this.player.body.velocity.x
-        );
-        this.obstacleGroup.add(obstacle);
-        break;
-      default:
-        console.warn("Unknown obstacle type:", type);
-        break;
-    }
-
-    if (obstacle) {
-      obstacle.addCollide(this.player);
-      this.scene.add.existing(obstacle);
-    }
+    obstacle.addCollide(this.player);
+    this.scene.add.existing(obstacle);
+    this.obstacleGroup.add(obstacle);
   }
 
-  private generateWorker() {
-    const numNormalWorkers = 1;
-    const numYellowWorkers = 2;
+  // private generateWorker() {
+  //   const numNormalWorkers = 1;
+  //   const numYellowWorkers = 2;
 
-    // Generate NormalWorkers
-    for (let i = 0; i < numNormalWorkers; i++) {
-      const xWorker =
-        this.scene.cameras.main.scrollX +
-        this.scene.cameras.main.width +
-        Phaser.Math.Between(0, 800);
-      const yWorker = 600;
-      const action = Phaser.Math.RND.pick(["walk", "run"]); // Random action
-      const flipX = Phaser.Math.RND.between(0, 1) === 1; // Random flipX for this worker
-      const worker = new NormalWorker(this.scene, action, xWorker, yWorker);
-      worker.setFlipX(flipX); // Set flipX
+  //   // Generate NormalWorkers
+  //   for (let i = 0; i < numNormalWorkers; i++) {
+  //     const xWorker =
+  //       this.scene.cameras.main.scrollX +
+  //       this.scene.cameras.main.width +
+  //       Phaser.Math.Between(0, 800);
+  //     const yWorker = 600;
+  //     const action = Phaser.Math.RND.pick(["walk", "run"]); // Random action
+  //     const flipX = Phaser.Math.RND.between(0, 1) === 1; // Random flipX for this worker
+  //     const worker = new NormalWorker(this.scene, action, xWorker, yWorker);
+  //     worker.setFlipX(flipX); // Set flipX
 
-      // Set up collisions
-      this.scene.physics.add.collider(worker, this.mapGenerator.getGround());
-      this.scene.physics.add.collider(this.player.getBullets(), worker, () => {
-        worker.handleCollide();
-      });
+  //     // Set up collisions
+  //     this.scene.physics.add.collider(worker, this.mapGenerator.getGround());
+  //     this.scene.physics.add.collider(this.player.getBullets(), worker, () => {
+  //       worker.handleCollide();
+  //     });
 
-      // Add worker to group and scene
-      this.workerGroup.add(worker);
-      this.scene.add.existing(worker);
-    }
+  //     // Add worker to group and scene
+  //     this.workerGroup.add(worker);
+  //     this.scene.add.existing(worker);
+  //   }
 
-    // Generate YellowWorkers
-    for (let i = 0; i < numYellowWorkers; i++) {
-      const xWorkerYellow =
-        this.scene.cameras.main.scrollX +
-        this.scene.cameras.main.width +
-        Phaser.Math.Between(0, 800);
-      const yWorkerYellow = 600;
-      const action = Phaser.Math.RND.pick(["walk", "run"]); // Random action
-      const flipX = Phaser.Math.RND.between(0, 1) === 1; // Random flipX for this worker
-      const worker = new YellowWorker(
-        this.scene,
-        action,
-        xWorkerYellow,
-        yWorkerYellow
-      );
-      worker.setFlipX(flipX); // Set flipX
+  //   // Generate YellowWorkers
+  //   for (let i = 0; i < numYellowWorkers; i++) {
+  //     const xWorkerYellow =
+  //       this.scene.cameras.main.scrollX +
+  //       this.scene.cameras.main.width +
+  //       Phaser.Math.Between(0, 800);
+  //     const yWorkerYellow = 600;
+  //     const action = Phaser.Math.RND.pick(["walk", "run"]); // Random action
+  //     const flipX = Phaser.Math.RND.between(0, 1) === 1; // Random flipX for this worker
+  //     const worker = new YellowWorker(
+  //       this.scene,
+  //       action,
+  //       xWorkerYellow,
+  //       yWorkerYellow
+  //     );
+  //     worker.setFlipX(flipX); // Set flipX
 
-      // Set up collisions
-      this.scene.physics.add.collider(worker, this.mapGenerator.getGround());
-      this.scene.physics.add.collider(this.player.getBullets(), worker, () => {
-        worker.handleCollide();
-      });
+  //     // Set up collisions
+  //     this.scene.physics.add.collider(worker, this.mapGenerator.getGround());
+  //     this.scene.physics.add.collider(this.player.getBullets(), worker, () => {
+  //       worker.handleCollide();
+  //     });
 
-      // Add worker to group and scene
-      this.workerGroup.add(worker);
-      this.scene.add.existing(worker);
-    }
-  }
+  //     // Add worker to group and scene
+  //     this.workerGroup.add(worker);
+  //     this.scene.add.existing(worker);
+  //   }
+  // }
 }

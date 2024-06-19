@@ -1,7 +1,10 @@
-import { CoinManager } from './CoinManager';
+import { CoinManager } from "./CoinManager";
 import { Scene } from "phaser";
 import { Player } from "../objects/player/Player";
 import { Coins } from "../objects/coin/Coin";
+import { Zapper } from "../objects/obstacle/zapper/Zapper";
+import { YellowWorker } from "../objects/worker/YellowWorker";
+import { NormalWorker } from "../objects/worker/NormalWorker";
 
 export class MapGenerator {
   private lv: number = 0;
@@ -12,14 +15,17 @@ export class MapGenerator {
   private layers: { rationX: number; sprite: Phaser.GameObjects.TileSprite }[] =
     [];
   private coins: Coins;
+
   constructor() {}
 
   public generateMap(
     maptype: string,
     scene: Scene,
     player: Player,
-    tilte: number, 
-    coinManager : CoinManager
+    tilte: number,
+    coinManager: CoinManager,
+    obstacleGroup: Phaser.GameObjects.Group,
+    workerGroup: Phaser.GameObjects.Group
   ): void {
     this.map = scene.make.tilemap({
       key: maptype,
@@ -70,18 +76,66 @@ export class MapGenerator {
       );
     }
 
-    if (tilte != 1 && this.lv % 2 == 1) {
-      let height = this.map.heightInPixels / 6;
-      let width =
-        (this.map.widthInPixels - 32 * 4.6) * this.lv +
-        this.map.widthInPixels / 3;
-      let patternNum = Math.floor(Math.random() * 27) + 1;
-      this.coins = new Coins(scene, width, height, patternNum);
-      this.coins.spawnCoins();
+    if (this.map) {
+      const objects = this.map.getObjectLayer("Objects")?.objects as any[];
+      if (objects) {
+        objects.forEach((object) => {
+          if (object.name === "Zapper") {
+            const zapper = new Zapper(
+              scene,
+              object.x + (this.map.widthInPixels - 32 * 4.6) * this.lv,
+              object.y
+            );
+            zapper.addCollide(player);
+            obstacleGroup.add(zapper);
+          } else if (object.name === "Coin") {
+            let height = object.y;
+            let width =
+              object.x + (this.map.widthInPixels - 32 * 4.6) * this.lv;
+            let patternNum = Math.floor(Math.random() * 27) + 1;
+            this.coins = new Coins(scene, width, height, patternNum);
+            this.coins.spawnCoins();
+            this.coins.addCollide(player, coinManager);
+          } else if (object.name === "YellowWorker") {
+            const action = Phaser.Math.RND.pick(["walk", "run"]);
+            const flipX = Phaser.Math.RND.between(0, 1) === 1;
 
-      this.coins.addCollide(player, coinManager);
+            const xWorker =
+              object.x + (this.map.widthInPixels - 32 * 4.6) * this.lv;
+            const yWorker = object.y;
+            const worker = new YellowWorker(scene, action, xWorker, yWorker);
+            worker.setFlipX(flipX);
+
+            scene.physics.add.collider(worker, this.getGround());
+            scene.physics.add.collider(player.getBullets(), worker, () => {
+              worker.handleCollide();
+            });
+
+            workerGroup.add(worker);
+            scene.add.existing(worker);
+          } else if (object.name === "NormalWorker") {
+            const action = Phaser.Math.RND.pick(["walk", "run"]);
+            const flipX = Phaser.Math.RND.between(0, 1) === 1;
+
+            const xWorker =
+              object.x + (this.map.widthInPixels - 32 * 4.6) * this.lv;
+            const yWorker = object.y;
+            const worker = new NormalWorker(scene, action, xWorker, yWorker);
+            worker.setFlipX(flipX);
+
+            scene.physics.add.collider(worker, this.getGround());
+            scene.physics.add.collider(player.getBullets(), worker, () => {
+              worker.handleCollide();
+            });
+
+            workerGroup.add(worker);
+            scene.add.existing(worker);
+          }
+        });
+      }
     }
   }
+
   public parallex(scene: Scene): void {
     for (let i = 3; i > 0; i--) {
       this.layers.push({
@@ -167,8 +221,13 @@ export class MapGenerator {
   }
   //      lv1c    lv2     lv3c
   // lv0  0.5  1  1.5  2  2.5  3
-  public update(player: Player, scene: Scene, coinManager : CoinManager): void {
-   
+  public update(
+    player: Player,
+    scene: Scene,
+    coinManager: CoinManager,
+    obstacleGroup: Phaser.GameObjects.Group,
+    workerGroup: Phaser.GameObjects.Group
+  ): void {
     if (
       this.map &&
       player.x >= (this.map.widthInPixels * (2 * this.lv + 1)) / 2
@@ -176,10 +235,26 @@ export class MapGenerator {
       this.lv++;
       let ran = Math.floor(Math.random() * 3); //0-2
       if (this.lv % 2 === 0) {
-        this.generateMap(this.mapName[0], scene, player, 0, coinManager);
+        this.generateMap(
+          this.mapName[0],
+          scene,
+          player,
+          0,
+          coinManager,
+          obstacleGroup,
+          workerGroup
+        );
       } else {
         this.setLayer(ran);
-        this.generateMap(this.mapName[ran + 1], scene, player, 0, coinManager);
+        this.generateMap(
+          this.mapName[ran + 1],
+          scene,
+          player,
+          0,
+          coinManager,
+          obstacleGroup,
+          workerGroup
+        );
       }
       if (this.ground) {
         scene.physics.add.collider(player, this.ground);
