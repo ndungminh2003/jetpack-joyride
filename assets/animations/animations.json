@@ -1,0 +1,401 @@
+{
+  "anims": [
+    {
+      "key": "jetpack-run",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "jetpack",
+        "start": 0,
+        "end": 3
+      },
+      "repeat": -1,
+      "frameRate": 10
+    },
+    {
+      "key": "body-run",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "player-body",
+        "start": 0,
+        "end": 3
+      },
+      "repeat": -1,
+      "frameRate": 10
+    },
+    {
+      "key": "head-run",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "player-head",
+        "start": 0,
+        "end": 3
+      },
+      "repeat": -1,
+      "frameRate": 10
+    },
+    {
+      "key": "jetpack-fly",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "jetpack",
+        "start": 4,
+        "end": 7
+      },
+      "repeat": -1,
+      "frameRate": 10
+    },
+    {
+      "key": "body-fly",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "player-body",
+        "start": 4,
+        "end": 7
+      },
+      "repeat": -1,
+      "frameRate": 10
+    },
+    {
+      "key": "head-fly",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "player-head",
+        "start": 4,
+        "end": 7
+      },
+      "repeat": -1,
+      "frameRate": 10
+    },
+    {
+      "key": "jetpack-fall",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "jetpack",
+        "start": 8,
+        "end": 11
+      },
+      "repeat": 0,
+      "frameRate": 10
+    },
+    {
+      "key": "body-fall",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "player-body",
+        "start": 8,
+        "end": 11
+      },
+      "repeat": 0,
+      "frameRate": 10
+    },
+    {
+      "key": "head-fall",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "player-head",
+        "start": 8,
+        "end": 11
+      },
+      "repeat": 0,
+      "frameRate": 10
+    },
+    {
+      "key": "body-die",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "player-body",
+        "start": 20,
+        "end": 31
+      },
+      "repeat": 0,
+      "frameRate": 10
+    },
+    {
+      "key": "head-die",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "player-head",
+        "start": 20,
+        "end": 31
+      },
+      "repeat": 0,
+      "frameRate": 10
+    },
+    {
+      "key": "bulletFlash",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "bulletFlash",
+        "start": 0,
+        "end": 3
+      },
+      "repeat": -1,
+      "frameRate": 10
+    },
+    {
+      "key": "bulletSplash",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "bulletSplash",
+        "start": 0,
+        "end": 3
+      },
+      "repeat": 0,
+      "frameRate": 10
+    },
+    {
+      "key": "zapEffect",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "zapper",
+        "start": 0,
+        "end": 3
+      },
+      "repeat": -1,
+      "frameRate": 10
+    },
+    {
+      "key": "zapGlowEffect",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "zapperGlow",
+        "start": 0,
+        "end": 15
+      },
+      "repeat": -1,
+      "frameRate": 30
+    },
+    {
+      "key": "zapGlowOffEffect",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "zapperGlowOff",
+        "start": 0,
+        "end": 15
+      },
+      "repeat": 0,
+      "frameRate": 30
+    },
+    {
+      "key": "zapOrAnimEffect",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "zapperOrAnim",
+        "start": 0,
+        "end": 3
+      },
+      "repeat": -1,
+      "frameRate": 15
+    },
+    {
+      "key": "missile-head-Effect",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "missile",
+        "start": 0,
+        "end": 3
+      },
+      "repeat": -1,
+      "frameRate": 30
+    },
+    {
+      "key": "missile-tall-Effect",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "missileEffect",
+        "start": 0,
+        "end": 3
+      },
+      "repeat": -1,
+      "frameRate": 15
+    },
+    {
+      "key": "missile-smog-Effect",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "missileEffect",
+        "start": 4,
+        "end": 6
+      },
+      "repeat": -1,
+      "frameRate": 15
+    },
+    {
+      "key": "missileAllertEffect1",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "missileAlert",
+        "start": 0,
+        "end": 3
+      },
+      "repeat": 3,
+      "frameRate": 20
+    },
+    {
+      "key": "missileAllertEffect2",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "missileAlert",
+        "start": 4,
+        "end": 6
+      },
+      "repeat": 1,
+      "frameRate": 20
+    },
+    {
+      "key": "missileExplosionEffect",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "missileExplosion",
+        "start": 0,
+        "end": 7
+      },
+      "repeat": 1,
+      "frameRate": 30
+    },
+    {
+      "key": "worker-body-walk",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "worker1Body",
+        "start": 0,
+        "end": 3
+      },
+      "repeat": -1,
+      "frameRate": 10
+    },
+    {
+      "key": "worker-head-walk",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "worker1Head",
+        "start": 0,
+        "end": 3
+      },
+      "repeat": -1,
+      "frameRate": 10
+    },
+    {
+      "key": "worker-body-walk-1",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "worker2Body",
+        "start": 0,
+        "end": 3
+      },
+      "repeat": -1,
+      "frameRate": 10
+    },
+    {
+      "key": "worker-head-walk-1",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "worker2Head",
+        "start": 0,
+        "end": 3
+      },
+      "repeat": -1,
+      "frameRate": 10
+    },
+    {
+      "key": "worker-body-run",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "worker1Body",
+        "start": 4,
+        "end": 6
+      },
+      "repeat": -1,
+      "frameRate": 15
+    },
+    {
+      "key": "worker-head-run",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "worker1Head",
+        "start": 4,
+        "end": 6
+      },
+      "repeat": -1,
+      "frameRate": 15
+    },
+    {
+      "key": "worker-body-run-1",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "worker2Body",
+        "start": 4,
+        "end": 6
+      },
+      "repeat": -1,
+      "frameRate": 15
+    },
+    {
+      "key": "worker-head-run-1",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "worker2Head",
+        "start": 4,
+        "end": 6
+      },
+      "repeat": -1,
+      "frameRate": 15
+    },
+    {
+      "key": "worker-body-die",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "worker1Body",
+        "start": 8,
+        "end": 15
+      },
+      "repeat": 0,
+      "frameRate": 15
+    },
+    {
+      "key": "worker-head-die",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "worker1Head",
+        "start": 8,
+        "end": 15
+      },
+      "repeat": 0,
+      "frameRate": 15
+    },
+    {
+      "key": "worker-body-die-1",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "worker2Body",
+        "start": 8,
+        "end": 15
+      },
+      "repeat": 0,
+      "frameRate": 15
+    },
+    {
+      "key": "worker-head-die-1",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "worker2Head",
+        "start": 8,
+        "end": 15
+      },
+      "repeat": 0,
+      "frameRate": 15
+    },
+    {
+      "key": "coinCollectAnim",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "coinCollect",
+        "start": 0,
+        "end": 3
+      },
+      "repeat": 0,
+      "frameRate": 15
+    }
+
+  ]
+}
