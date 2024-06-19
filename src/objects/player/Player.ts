@@ -50,7 +50,7 @@ export class Player extends Phaser.GameObjects.Container {
     // Set properties
     this.bulletFlash.setVisible(false);
     this.body.setSize(15, 30);
-    this.setScale(2);
+    this.setScale(1.7);
     this.bulletFlash.setScale(0.5);
 
     this.body.velocity.x = 250;

@@ -18,8 +18,6 @@ export class Coins extends Phaser.GameObjects.Container {
     (this.body as Phaser.Physics.Arcade.Body).allowGravity = false;
     this.scene.add.existing(this);
     (this.body as Phaser.Physics.Arcade.Body).setImmovable(true);
-
-    this.spawnCoins();
     this.add(this.coins);
   }
 

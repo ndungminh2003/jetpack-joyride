@@ -7,12 +7,12 @@ export class NormalWorker extends BaseWorker {
 
   override init() {
     super.init();
-
     this.workerHead = this.scene.add.sprite(16, 8, "worker1Head");
     this.workerBody = this.scene.add.sprite(16, 20, "worker1Body");
-
-    this.playAction(this.action); // Initial action
-
+    if (this.action === "run") {
+      this.body.setVelocityX(200);
+    }
+    this.playAction(this.action);
     this.body.setSize(32, 32);
     this.add([this.workerBody, this.workerHead]);
   }

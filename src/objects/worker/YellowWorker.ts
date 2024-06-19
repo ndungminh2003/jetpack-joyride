@@ -10,7 +10,9 @@ export class YellowWorker extends BaseWorker {
 
     this.workerHead = this.scene.add.sprite(16, 8, "worker2Head");
     this.workerBody = this.scene.add.sprite(16, 20, "worker2Body");
-
+    if(this.action === "run"){
+      this.body.setVelocityX(200);
+    }
     this.playAction(this.action);
     this.body.setSize(32, 32);
     this.add([this.workerBody, this.workerHead]);

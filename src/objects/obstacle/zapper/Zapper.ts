@@ -30,16 +30,16 @@ export class Zapper extends Obstacle {
     this.rotation = rotation;
 
     this.zapper = this.scene.add.tileSprite(512, 54, 1024, 117, "zapper1");
-    this.zapGlowLeft = this.scene.add.sprite(0, 54, "zapperGlow").setScale(1.5);
+    this.zapGlowLeft = this.scene.add.sprite(0, 54, "zapperGlow").setScale(2.5);
     this.zapGlowRight = this.scene.add
       .sprite(1024, 54, "zapperGlow")
-      .setScale(1.5);
+      .setScale(2.5);
     this.zapOrAnimLeft = this.scene.add
       .sprite(0, 54, "zapperOrAnim")
-      .setScale(1.5);
+      .setScale(2.5);
     this.zapOrAnimRight = this.scene.add
       .sprite(1024, 54, "zapperOrAnim")
-      .setScale(1.5);
+      .setScale(2.5);
 
     this.zapOrAnimLeft.rotation = Math.PI / 2;
     this.zapOrAnimRight.rotation = -Math.PI / 2;

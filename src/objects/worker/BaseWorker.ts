@@ -19,7 +19,8 @@ export abstract class BaseWorker extends Phaser.GameObjects.Container {
     this.body.setVelocityX(50);
     this.body.setAllowGravity(false);
     this.body.setVelocityY(0);
-    this.setScale(1.5);
+    this.setScale(2);
+
   }
 
   protected abstract playAction(action: string): void;
