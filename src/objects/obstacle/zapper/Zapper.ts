@@ -93,6 +93,9 @@ export class Zapper extends Obstacle {
   public addCollide(player: Player): void {
     this.getCircleCollisions().forEach((circle) => {
       this.scene.physics.add.collider(player, circle, () => {
+        
+        if(player.active === false) return;
+
         let glowOff = this.scene.add.sprite(player.x, player.y, "zapperGlowOff");
         glowOff.setDepth(Infinity);
         glowOff.play("zapGlowOffEffect", true);

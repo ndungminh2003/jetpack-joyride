@@ -64,6 +64,8 @@ export class Missile extends Obstacle {
 
   public addCollide(player: Player): void {
     this.scene.physics.add.collider(player, this, () => {
+      
+      if (player.active === false) return;
       let missileExplosion = this.scene.add.sprite(
         player.x + player.body.width,
         player.y + player.body.height / 2,
