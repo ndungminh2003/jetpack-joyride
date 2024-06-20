@@ -17,7 +17,6 @@ export class GameScene extends Scene {
 
   create() {
 
-
     // Create music manager
     MusicManager.getInstance(this).playBGM();
     
