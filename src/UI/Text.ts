@@ -1,4 +1,4 @@
-export class Score extends Phaser.GameObjects.Text {
+export class Text extends Phaser.GameObjects.Text {
     constructor(
         scene: Phaser.Scene,
         x: number,
@@ -12,7 +12,7 @@ export class Score extends Phaser.GameObjects.Text {
         scene.add.existing(this)
     }
 
-    public setScore(score: number) {
+    public setTextNumber(score: number) {
         this.setText(`${score}M`)
     }
 }

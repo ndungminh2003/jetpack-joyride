@@ -43,7 +43,7 @@ export class GameOverScene extends Scene {
                 stroke: '#000000',
                 strokeThickness: 3,
                 align: 'center',
-                color: '#FFFF00', // Add this line to set the text color to yellow
+                color: '#FFFF00',
             })
             .setOrigin(0.5)
 

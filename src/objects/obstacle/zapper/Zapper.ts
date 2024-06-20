@@ -38,25 +38,22 @@ export class Zapper extends Obstacle {
         this.zapOrAnimLeft.rotation = Math.PI / 2
         this.zapOrAnimRight.rotation = -Math.PI / 2
 
-        // Play animations
         this.zapGlowLeft.play('zapGlowEffect')
         this.zapGlowRight.play('zapGlowEffect')
         this.zapOrAnimLeft.play('zapOrAnimEffect')
         this.zapOrAnimRight.play('zapOrAnimEffect')
 
-        // Add the sprites and circles to the group
         this.add([
             this.zapper,
             this.zapGlowLeft,
             this.zapGlowRight,
             this.zapOrAnimLeft,
             this.zapOrAnimRight,
-            ...this.circleCollisions, // Spread the circle collisions array
+            ...this.circleCollisions,
         ])
 
         const scale = [0.3, 0.35]
 
-        // ramdom scale
         this.setScale(scale[Phaser.Math.Between(0, 1)])
     }
 

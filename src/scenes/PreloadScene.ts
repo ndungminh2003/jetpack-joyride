@@ -22,7 +22,6 @@ export class Preloader extends Scene {
     preload() {
         this.createLoadingGraphics()
 
-        // pass value to change the loading bar fill
         this.load.on(
             'progress',
             (value: number) => {

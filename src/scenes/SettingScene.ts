@@ -13,10 +13,7 @@ export class SettingScene extends Scene {
     }
 
     create() {
-        // Create music manager
-
         const { width, height } = this.cameras.main
-
         const graphics = this.add.graphics()
 
         graphics.fillStyle(0x000000, 0.7)
@@ -50,7 +47,7 @@ export class SettingScene extends Scene {
 
         this.btnCross = new Button(this, width / 1.65, height / 3, 'btnCross', '', () => {
             this.scene.stop('SettingScene')
-            this.scene.resume('MainMenuScene') // Resume the MainMenuScene
+            this.scene.resume('MainMenuScene')
         })
 
         this.add

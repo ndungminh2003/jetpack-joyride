@@ -1,14 +1,14 @@
-import { Score } from '../UI/Score'
+import { Text } from '../UI/Text'
 
 export class CoinManager {
     private coin: number
-    private coinText: Score
-    private totalTextCoin: Score
+    private coinText: Text
+    private totalTextCoin: Text
 
     constructor(scene: Phaser.Scene, coin: number = 0) {
         this.coin = coin
 
-        this.coinText = new Score(scene, 10 + 40, scene.cameras.main.height / 20 + 60, '0', {
+        this.coinText = new Text(scene, 10 + 40, scene.cameras.main.height / 20 + 60, '0', {
             fontSize: '32px',
             stroke: '#000000',
             strokeThickness: 6,

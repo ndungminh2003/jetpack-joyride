@@ -16,24 +16,19 @@ export class GameScene extends Scene {
     }
 
     create() {
-        // Create music manager
         MusicManager.getInstance(this).playBGM()
 
-        // Create player
         this.player = new Player({
             scene: this,
             x: 100,
             y: 550,
         })
 
-        //create map generator
         this.mapGenerator = new MapGenerator()
 
-        // Create groups
         this.obstacleGroup = this.add.group()
         this.workerGroup = this.add.group()
 
-        // Create GameManager
         this.gameManager = new GameManager({
             scene: this,
             player: this.player,

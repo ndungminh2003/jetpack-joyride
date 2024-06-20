@@ -212,7 +212,7 @@ export class MapGenerator {
             player.x >= ((this.map.widthInPixels - 32 * 4.55) * (2 * this.lv + 1)) / 2
         ) {
             this.lv++
-            let ran = Math.floor(Math.random() * 3) //0-2
+            let ran = Math.floor(Math.random() * 3)
             if (this.lv % 2 === 0) {
                 this.generateMap(
                     this.mapName[0],
