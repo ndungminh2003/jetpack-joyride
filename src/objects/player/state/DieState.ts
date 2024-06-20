@@ -36,7 +36,6 @@ export class DieState extends BaseState {
     if (this.player.body.velocity.x <= 0) {
       this.player.body.velocity.x = 0;
       this.player.body.enable = false;
-      
     }
   }
 }

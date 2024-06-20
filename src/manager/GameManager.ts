@@ -26,7 +26,42 @@ export class GameManager {
 
   private init() {
     // Create map and set up world bounds
+    this.createManager();
 
+    // Set up player collisions with ground
+    this.scene.physics.add.collider(this.player, this.mapGenerator.getGround());
+
+    this.scene.physics.add.overlap(
+      this.player.getBullets(),
+      this.mapGenerator.getGround(),
+      (bullet, _) => {
+        this.player
+          .getBullets()
+          .handleBulletCollideWithGround(bullet as Phaser.Physics.Arcade.Image);
+      }
+    );
+
+    // Handle world bounds events
+    // this.scene.physics.world.on("worldbounds", (body: any) => {
+    //   body.gameObject.onWorldBounds();
+    // });
+
+    // Set up camera to follow player
+    this.createCamera();
+
+    // Set player and bullet depths
+    this.player.setDepth(Infinity);
+    this.player.getBullets().setDepth(Infinity);
+
+    this.scene.time.addEvent({
+      delay: 4000,
+      callback: this.generateObstacle,
+      callbackScope: this,
+      loop: true,
+    });
+  }
+
+  private createManager() {
     this.scoreManager = new ScoreManager(this.scene, 0, this.player);
     this.coinManager = new CoinManager(this.scene, 0);
 
@@ -46,45 +81,20 @@ export class GameManager {
       Infinity,
       this.mapGenerator.getMap().heightInPixels
     );
+  }
 
-    // Set up player collisions with ground
-    this.scene.physics.add.collider(this.player, this.mapGenerator.getGround());
-
-    this.scene.physics.add.overlap(
-      this.player.getBullets(),
-      this.mapGenerator.getGround(),
-      (bullet, _) => {
-        this.player
-          .getBullets()
-          .handleBulletCollideWithGround(bullet as Phaser.Physics.Arcade.Image);
-      }
-    );
-
-    // Handle world bounds events
-    this.scene.physics.world.on("worldbounds", (body: any) => {
-      body.gameObject.onWorldBounds();
-    });
-
-    // Set up camera to follow player
+  private createCamera() {
     this.scene.cameras.main.startFollow(this.player, true, 0.5, 0.5);
-    this.scene.cameras.main.setFollowOffset(-this.scene.cameras.main.width / 8, 0);
+    this.scene.cameras.main.setFollowOffset(
+      -this.scene.cameras.main.width / 8,
+      0
+    );
     this.scene.cameras.main.setBounds(
       0,
       0,
       Infinity,
       this.mapGenerator.getMap().heightInPixels
     );
-
-    // Set player and bullet depths
-    this.player.setDepth(Infinity);
-    this.player.getBullets().setDepth(Infinity);
-
-    this.scene.time.addEvent({
-      delay: 4000,
-      callback: this.generateObstacle,
-      callbackScope: this,
-      loop: true,
-    });
   }
 
   public update(time: number, delta: number) {

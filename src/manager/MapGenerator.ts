@@ -50,7 +50,7 @@ export class MapGenerator {
         .createLayer(
           "Layer",
           this.tileset,
-          (this.map.widthInPixels - 32 * 4.6) * this.lv,
+          (this.map.widthInPixels - 32 * 4.55) * this.lv,
           0
         )
         ?.setDepth(9999 - this.lv);
@@ -230,7 +230,7 @@ export class MapGenerator {
   ): void {
     if (
       this.map &&
-      player.x >= (this.map.widthInPixels * (2 * this.lv + 1)) / 2
+      player.x >= ((this.map.widthInPixels - 32 * 4.55) * (2 * this.lv + 1)) / 2
     ) {
       this.lv++;
       let ran = Math.floor(Math.random() * 3); //0-2

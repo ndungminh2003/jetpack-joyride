@@ -7,6 +7,15 @@ class Bullet extends Phaser.Physics.Arcade.Image {
     this.setImmovable(true);
 
     this.rotation = Math.PI / 2 - angle;
+
+    // let rocketmgshell = this.scene.physics.add.image(
+    //   this.x,
+    //   this.y - 10,
+    //   "roketmgshell"
+    // ).setDepth(10000);
+    // rocketmgshell.setVelocityX(-20)
+    // rocketmgshell.rotation = Math.PI / 2 - angle;
+
   }
 
   public onCreate() {

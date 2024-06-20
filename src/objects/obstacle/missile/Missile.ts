@@ -24,10 +24,11 @@ export class Missile extends Obstacle {
   private warning(x: number, y: number, playerVelocityX: number): void {
     MusicManager.getInstance(this.scene).playMissileWarning();
     
-    this.missileAlert = this.scene.physics.add.sprite(x, y, "missileAlert");
+    this.missileAlert = this.scene.physics.add.sprite(x, y, "missileAlert").setScale(2);
     (this.missileAlert.body as Phaser.Physics.Arcade.Body)
       .setVelocityX(playerVelocityX)
-      .setAllowGravity(false);
+      .setAllowGravity(false)
+
     this.scene.add.existing(this.missileAlert);
     this.missileAlert.setDepth(Infinity);
 
@@ -47,6 +48,7 @@ export class Missile extends Obstacle {
     this.missileSmog = this.scene.add.sprite(12, 16, "missileEffect");
     this.missileHead = this.scene.add.sprite(16, 16, "missile");
     this.missileTall = this.scene.add.sprite(48, 16, "missileEffect");
+    this.body.setImmovable(true);
   
     MusicManager.getInstance(this.scene).playMissileLaunch();
 

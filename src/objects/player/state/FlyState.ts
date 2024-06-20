@@ -68,6 +68,7 @@ export class FlyState extends BaseState {
       }
     }
 
+
     if (this.player.getKeys().get("FLY")?.isUp) {
       this.player.setFirstTimeFall(true);
       this.changeState(new FallState(this.player));

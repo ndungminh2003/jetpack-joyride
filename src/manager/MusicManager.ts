@@ -1,8 +1,3 @@
-// die_bones
-// missileLaunch
-// missileWarning
-// rocketExplosion
-
 
 export class MusicManager {
   private static instance: MusicManager;

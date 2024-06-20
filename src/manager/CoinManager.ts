@@ -15,7 +15,7 @@ export class CoinManager {
       "0",
       {
         fontSize: "32px",
-        stroke: "#000000", // black color for the outline
+        stroke: "#000000", 
         strokeThickness: 6,
       }
     ).setDepth(Infinity);
@@ -25,7 +25,7 @@ export class CoinManager {
       .setDepth(Infinity)
       .setScrollFactor(0);
 
-    // Initialize best score in localStorage if not already set
+    
     if (localStorage.getItem("TOTALCOINS") === null) {
       localStorage.setItem("TOTALCOINS", "0");
     }
@@ -39,10 +39,10 @@ export class CoinManager {
     this.coin += 1;
   }
 
-  // Write score to local storage if it's higher than the current best score
+
   public writeCoinToLocalStorage(): void {
     const currentTotalCoins = localStorage.getItem("TOTALCOINS");
-    // add the current coin to the total coins
+  
     const totalCoins = parseInt(currentTotalCoins ?? "0") + this.coin;
     localStorage.setItem("TOTALCOINS", totalCoins.toString());
   }
