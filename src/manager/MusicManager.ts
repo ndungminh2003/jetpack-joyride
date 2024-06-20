@@ -1,14 +1,14 @@
 export class MusicManager {
     private static instance: MusicManager
-    private bgm: Phaser.Sound.BaseSound
-    private jetpackFire: Phaser.Sound.BaseSound
-    private runSound: Phaser.Sound.BaseSound[] = []
+    private bgm: Phaser.Sound.WebAudioSound
+    private jetpackFire: Phaser.Sound.WebAudioSound
+    private runSound: Phaser.Sound.WebAudioSound[] = []
     private currentRunSoundIndex: number = 0
 
-    private explosion: Phaser.Sound.BaseSound
-    private missileLaunch: Phaser.Sound.BaseSound
-    private missileWarning: Phaser.Sound.BaseSound
-    private dieBones: Phaser.Sound.BaseSound
+    private explosion: Phaser.Sound.WebAudioSound
+    private missileLaunch: Phaser.Sound.WebAudioSound
+    private missileWarning: Phaser.Sound.WebAudioSound
+    private dieBones: Phaser.Sound.WebAudioSound
 
     public static getInstance(scene: Phaser.Scene): MusicManager {
         if (!MusicManager.instance) {
@@ -18,17 +18,43 @@ export class MusicManager {
     }
 
     private constructor(scene: Phaser.Scene) {
-        this.bgm = scene.sound.add('musicLevel', { loop: true, volume: 0.5 })
-        this.jetpackFire = scene.sound.add('jetpackFire', { loop: true, volume: 0.5 })
-        this.runSound.push(scene.sound.add('run1', { loop: false, volume: 0.5 }))
-        this.runSound.push(scene.sound.add('run2', { loop: false, volume: 0.5 }))
-        this.runSound.push(scene.sound.add('run3', { loop: false, volume: 0.5 }))
-        this.runSound.push(scene.sound.add('run4', { loop: false, volume: 0.5 }))
+        this.bgm = scene.sound.add('musicLevel', {
+            loop: true,
+            volume: 0.5,
+        }) as Phaser.Sound.WebAudioSound
+        this.jetpackFire = scene.sound.add('jetpackFire', {
+            loop: true,
+            volume: 0.5,
+        }) as Phaser.Sound.WebAudioSound
+        this.runSound.push(
+            scene.sound.add('run1', { loop: false, volume: 0.5 }) as Phaser.Sound.WebAudioSound
+        )
+        this.runSound.push(
+            scene.sound.add('run2', { loop: false, volume: 0.5 }) as Phaser.Sound.WebAudioSound
+        )
+        this.runSound.push(
+            scene.sound.add('run3', { loop: false, volume: 0.5 }) as Phaser.Sound.WebAudioSound
+        )
+        this.runSound.push(
+            scene.sound.add('run4', { loop: false, volume: 0.5 }) as Phaser.Sound.WebAudioSound
+        )
 
-        this.explosion = scene.sound.add('rocketExplosion', { loop: false, volume: 0.5 })
-        this.missileLaunch = scene.sound.add('missileLaunch', { loop: false, volume: 0.5 })
-        this.missileWarning = scene.sound.add('missileWarning', { loop: false, volume: 0.5 })
-        this.dieBones = scene.sound.add('dieBones', { loop: false, volume: 0.5 })
+        this.explosion = scene.sound.add('rocketExplosion', {
+            loop: false,
+            volume: 0.5,
+        }) as Phaser.Sound.WebAudioSound
+        this.missileLaunch = scene.sound.add('missileLaunch', {
+            loop: false,
+            volume: 0.5,
+        }) as Phaser.Sound.WebAudioSound
+        this.missileWarning = scene.sound.add('missileWarning', {
+            loop: false,
+            volume: 0.5,
+        }) as Phaser.Sound.WebAudioSound
+        this.dieBones = scene.sound.add('dieBones', {
+            loop: false,
+            volume: 0.5,
+        }) as Phaser.Sound.WebAudioSound
     }
 
     public playBGM(): void {
