@@ -16,11 +16,9 @@ export class RunState extends BaseState {
 
     MusicManager.getInstance(this.player.getCurrentScene()).playRunSound();
 
-    if (
-      this.player.getKeys().get("FLY")?.isDown ||
-      this.player.getCurrentScene().input.pointer1.isDown ||
-      this.player.getCurrentScene().input.pointer2.isDown
-    ) {
+    console.log(this.player.getIsFlying())
+
+    if ( this.player.getIsFlying()) {
       MusicManager.getInstance(this.player.getCurrentScene()).stopRunSound();
       this.changeState(new FlyState(this.player));
     }

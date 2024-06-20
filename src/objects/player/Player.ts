@@ -11,6 +11,7 @@ export class Player extends Phaser.GameObjects.Container {
   private keys: Map<string, Phaser.Input.Keyboard.Key>;
   private bullets: Bullets;
   private firstTimeFall: boolean = false;
+  private isFlying: boolean = false;
 
   private playerHead: Phaser.GameObjects.Sprite;
   private playerBody: Phaser.GameObjects.Sprite;
@@ -28,8 +29,12 @@ export class Player extends Phaser.GameObjects.Container {
     // Initialize sprites to add in container
     this.playerHead = this.currentScene.add.sprite(13, 8, "player-head");
     this.playerBody = this.currentScene.add.sprite(13, 20, "player-body");
-    this.jetpack = this.currentScene.add.sprite(0, 17, "jetpack").setDepth(Infinity);
-    this.bulletFlash = this.currentScene.add.sprite(0, 47, "bulletFlash").setDepth(Infinity);
+    this.jetpack = this.currentScene.add
+      .sprite(0, 17, "jetpack")
+      .setDepth(Infinity);
+    this.bulletFlash = this.currentScene.add
+      .sprite(0, 47, "bulletFlash")
+      .setDepth(Infinity);
     this.setDepth(Infinity);
 
     this.add([
@@ -45,7 +50,6 @@ export class Player extends Phaser.GameObjects.Container {
     this.currentScene.add.existing(this);
     this.body.setImmovable(true);
     this.body.collideWorldBounds = true;
-
 
     // Set properties
     this.bulletFlash.setVisible(false);
@@ -72,15 +76,24 @@ export class Player extends Phaser.GameObjects.Container {
     // Input
     this.keys = new Map([["FLY", this.addKey("SPACE")]]);
 
-    this.scene.input.addPointer(2);
-    
-    
+    this.scene.input.keyboard?.createCursorKeys();
+
+    this.scene.input.on("pointerdown", this.startFlying, this);
+    this.scene.input.on("pointerup", this.stopFlying, this);
+
+  }
+
+  private startFlying(): void {
+    this.isFlying = true;
+  }
+
+  private stopFlying(): void {
+    this.isFlying = false;
   }
 
   private addKey(key: string): Phaser.Input.Keyboard.Key {
     return this.currentScene.input.keyboard!.addKey(key);
   }
-
 
   public update(time: number, delta: number): void {
     if (!(this.currentState instanceof DieState)) {
@@ -89,6 +102,10 @@ export class Player extends Phaser.GameObjects.Container {
     } else {
       this.currentState.update(time, delta);
     }
+  }
+
+  public getIsFlying(): boolean {
+    return this.isFlying;
   }
 
   public setCurrentState(state: BaseState): void {

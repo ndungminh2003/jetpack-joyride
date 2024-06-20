@@ -6,23 +6,28 @@ import { FallState } from "./FallState";
 export class FlyState extends BaseState {
   private jetpackSoundPlaying: boolean;
 
+
   constructor(player: Player) {
     super(player);
-    this.jetpackSoundPlaying = false; // Initialize the flag
+    this.jetpackSoundPlaying = false; 
+  
   }
 
   public update(time: number, delta: number): void {
     console.log(time, delta);
-
+    
     this.player.getBulletFlash().setVisible(true);
     this.player.getPlayerBody().play("body-fly", true);
     this.player.getPlayerHead().play("head-fly", true);
     this.player.getJetpack().play("jetpack-fly", true);
     this.player.getBulletFlash().play("bulletFlash", true);
 
-    if (this.player.getKeys().get("FLY")?.isDown) {
-      this.player.body.velocity.y = -300;
+    console.log(this.player.getIsFlying())
+   
 
+    if (this.player.getIsFlying()) {
+
+      this.player.body.velocity.y = -300;
       if (!this.jetpackSoundPlaying) {
         MusicManager.getInstance(
           this.player.getCurrentScene()
@@ -68,8 +73,7 @@ export class FlyState extends BaseState {
       }
     }
 
-
-    if (this.player.getKeys().get("FLY")?.isUp) {
+    if ( !this.player.getIsFlying()) {
       this.player.setFirstTimeFall(true);
       this.changeState(new FallState(this.player));
       this.player.getBulletFlash().anims.stop();
@@ -77,5 +81,7 @@ export class FlyState extends BaseState {
       this.jetpackSoundPlaying = false;
       MusicManager.getInstance(this.player.getCurrentScene()).stopJetpackFire();
     }
+
+  
   }
 }
