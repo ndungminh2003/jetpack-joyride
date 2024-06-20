@@ -63,7 +63,7 @@
 </data>
  </layer>
  <objectgroup id="3" name="Objects">
-  <object id="1" name="Coin" x="637.071" y="379.055">
+  <object id="1" name="Coin" x="645.071" y="351.055">
    <point/>
   </object>
   <object id="4" name="Zapper" x="1997.43" y="363.673">

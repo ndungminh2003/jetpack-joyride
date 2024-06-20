@@ -1,59 +1,57 @@
 export abstract class BaseWorker extends Phaser.GameObjects.Container {
-  declare body: Phaser.Physics.Arcade.Body;
-  protected workerHead: Phaser.GameObjects.Sprite;
-  protected workerBody: Phaser.GameObjects.Sprite;
+    declare body: Phaser.Physics.Arcade.Body
+    protected workerHead: Phaser.GameObjects.Sprite
+    protected workerBody: Phaser.GameObjects.Sprite
 
-  protected action: string;
+    protected action: string
 
-  constructor(scene: Phaser.Scene, action: string, x: number, y: number) {
-    super(scene, x, y);
-    this.action = action;
-    this.init();
-  }
-
-  protected init() {
-    this.scene.physics.world.enable(this);
-    // this.scene.add.existing(this);
-    this.body.setImmovable(true);
-    this.setDepth(Infinity);
-    this.body.setVelocityX(50);
-    this.body.setAllowGravity(false);
-    this.body.setVelocityY(0);
-    this.setScale(2);
-
-  }
-
-  protected abstract playAction(action: string): void;
-
-  public setFlipX(flipX: boolean): void {
-    this.workerHead.setFlipX(flipX);
-    this.workerBody.setFlipX(flipX);
-    if (flipX) {
-      this.body.setVelocityX(-50);
+    constructor(scene: Phaser.Scene, action: string, x: number, y: number) {
+        super(scene, x, y)
+        this.action = action
+        this.init()
     }
-  }
 
-  public handleCollide(): void {
+    protected init() {
+        this.scene.physics.world.enable(this)
+        // this.scene.add.existing(this);
+        this.body.setImmovable(true)
+        this.setDepth(Infinity)
+        this.body.setVelocityX(50)
+        this.body.setAllowGravity(false)
+        this.body.setVelocityY(0)
+        this.setScale(2)
+    }
 
-    this.rotation = Math.PI / 2;
-    this.body.enable = false;
-    this.setActive(false);
-    
-    this.body.setVelocityX(0);
+    protected abstract playAction(action: string): void
 
-    this.scene.tweens.add({
-      targets: this,
-      y: this.y - 50,
-      duration: 500,
-      ease: "Power1",
-      yoyo: true,
-      repeat: 0,
-    });
+    public setFlipX(flipX: boolean): void {
+        this.workerHead.setFlipX(flipX)
+        this.workerBody.setFlipX(flipX)
+        if (flipX) {
+            this.body.setVelocityX(-50)
+        }
+    }
 
-    this.workerBody.x = 32;
-    this.workerHead.x = 32;
-    this.workerHead.y = 8;
-  }
+    public handleCollide(): void {
+        this.rotation = Math.PI / 2
+        this.body.enable = false
+        this.setActive(false)
 
-  public abstract update(): void;
+        this.body.setVelocityX(0)
+
+        this.scene.tweens.add({
+            targets: this,
+            y: this.y - 50,
+            duration: 500,
+            ease: 'Power1',
+            yoyo: true,
+            repeat: 0,
+        })
+
+        this.workerBody.x = 32
+        this.workerHead.x = 32
+        this.workerHead.y = 8
+    }
+
+    public abstract update(): void
 }

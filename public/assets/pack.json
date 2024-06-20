@@ -157,6 +157,33 @@
       },
       {
         "type": "spritesheet",
+        "key": "RotatingZapper",
+        "url": "./assets/Obstacles/Zapper/RotatingZappers/zapEffectsRotating.png",
+        "frameConfig": {
+          "frameWidth": 1024,
+          "frameHeight": 117
+        }
+      },
+      {
+        "type": "spritesheet",
+        "key": "zapperGlowRotating",
+        "url": "./assets/Obstacles/Zapper/RotatingZappers/glowRotating.png",
+        "frameConfig": {
+          "frameWidth": 128,
+          "frameHeight": 128
+        }
+      },
+      {
+        "type": "spritesheet",
+        "key": "zapperGlowRotatingOff",
+        "url": "./assets/Obstacles/Zapper/RotatingZappers/glowRotatingOff.png",
+        "frameConfig": {
+          "frameWidth": 128,
+          "frameHeight": 128
+        }
+      },
+      {
+        "type": "spritesheet",
         "key": "missile",
         "url": "./assets/Obstacles/Missile/missile.png",
         "frameConfig": {

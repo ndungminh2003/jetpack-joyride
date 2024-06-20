@@ -1,5 +1,5 @@
 export interface IContainerConstructor {
-  scene: Phaser.Scene;
-  x: number;
-  y: number;
+    scene: Phaser.Scene
+    x: number
+    y: number
 }

@@ -166,6 +166,17 @@
       "frameRate": 30
     },
     {
+      "key": "zapGlowRotatingEffect",
+      "frames": {
+        "typeOfGeneration": "generateFrameNumbers",
+        "key": "zapperGlowRotating",
+        "start": 0,
+        "end": 15
+      },
+      "repeat": -1,
+      "frameRate": 30
+    },
+    {
       "key": "zapGlowOffEffect",
       "frames": {
         "typeOfGeneration": "generateFrameNumbers",
