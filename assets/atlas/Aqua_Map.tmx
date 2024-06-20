@@ -150,7 +150,7 @@
 </data>
  </layer>
  <objectgroup id="15" name="Objects">
-  <object id="1" name="Zapper" x="668" y="343.152">
+  <object id="1" name="Zapper" x="822.545" y="346.182">
    <point/>
   </object>
   <object id="4" name="Zapper" x="2886" y="332">
@@ -159,7 +159,7 @@
   <object id="5" name="Zapper" x="3858" y="454">
    <point/>
   </object>
-  <object id="7" name="Coin" x="1792.79" y="394.606">
+  <object id="7" name="Coin" x="1886.73" y="315.818">
    <point/>
   </object>
   <object id="8" name="NormalWorker" x="281.818" y="610">
